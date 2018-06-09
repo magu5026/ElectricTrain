@@ -11,12 +11,12 @@ end
 local function Migration(data)
 	if NeedMigration(data,MODNAME) then
 		local old_version = GetOldVersion(data,MODNAME)
-		if old_version < "00.16.00" then
+		if old_version < "00.16.03" then
 			global.ElectricTrain.TrainList = {}
 			global.ElectricTrain.ProviderList = {}
 			local all_trains = game.surfaces[1].find_entities_filtered{type="locomotive"}
 			for _,train in pairs(all_trains) do
-				if train.name:find("electric-") then
+				if train.name:find("electric-locomotive-mk",1,true) then
 					table.insert(global.ElectricTrain.TrainList,train) 
 				end
 			end	
@@ -64,7 +64,7 @@ local function ProviderBuild(entity)
 end
 
 local function LocBuild(entity)
-	if entity.name:find("electric-") then
+	if entity.name:find("electric-locomotive-mk",1,true) then
 		table.insert(global.ElectricTrain.TrainList,entity)
 	end
 end
@@ -74,7 +74,7 @@ local function ProviderRemove(entity)
 end
 
 local function LocRemove(entity)
-	if entity.name:find("electric-") then 
+	if entity.name:find("electric-locomotive-mk",1,true) then 
 		Remove(global.ElectricTrain.TrainList,entity)
 	end
 end

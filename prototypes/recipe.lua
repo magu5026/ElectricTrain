@@ -1,18 +1,18 @@
 local eloc = table.deepcopy(data.raw['recipe']['locomotive'])
-eloc.name = "electric-locomotive"
+eloc.name = "electric-locomotive-mk1"
 eloc.ingredients =
 	{
 		{"locomotive", 1},
 		{"battery", 10},
 		{"electric-engine-unit", 20}	
 	}
-eloc.result = "electric-locomotive"
+eloc.result = "electric-locomotive-mk1"
 
 local eloc2 = table.deepcopy(data.raw['recipe']['locomotive'])
 eloc2.name = "electric-locomotive-mk2"
 eloc2.ingredients =
 	{
-		{"electric-locomotive", 1},
+		{"electric-locomotive-mk1", 1},
 		{"battery", 5},
 		{"electric-engine-unit", 10},
 		{"advanced-circuit", 10}

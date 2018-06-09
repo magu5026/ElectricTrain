@@ -8,7 +8,7 @@ data:extend
 	{
 		{
 			type = "unlock-recipe",
-			recipe = "electric-locomotive"
+			recipe = "electric-locomotive-mk1"
 		},
 		{
 			type = "unlock-recipe",

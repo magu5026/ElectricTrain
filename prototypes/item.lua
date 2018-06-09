@@ -1,8 +1,8 @@
 local eloc = table.deepcopy(data.raw['item-with-entity-data']['locomotive'])
-eloc.name = "electric-locomotive"
+eloc.name = "electric-locomotive-mk1"
 eloc.subgroup = "electric-transport-log"
 eloc.order = "b"
-eloc.place_result = "electric-locomotive"
+eloc.place_result = "electric-locomotive-mk1"
 
 local eloc2 = table.deepcopy(data.raw['item-with-entity-data']['locomotive'])
 eloc2.name = "electric-locomotive-mk2"

@@ -8,7 +8,7 @@ data.raw['item-with-entity-data']['fluid-wagon'].order = "a"
 
 
 if not settings.startup['hybrid-train'].value then
-	data.raw['locomotive']['electric-locomotive'].burner = {effectivity = 1, fuel_inventory_size = 0}
+	data.raw['locomotive']['electric-locomotive-mk1'].burner = {effectivity = 1, fuel_inventory_size = 0}
 	data.raw['locomotive']['electric-locomotive-mk2'].burner = {effectivity = 1, fuel_inventory_size = 0}
 	data.raw['locomotive']['electric-locomotive-mk3'].burner = {effectivity = 1, fuel_inventory_size = 0}
 end
@@ -43,7 +43,7 @@ end
 
 if mods['Vehicle Wagon'] and settings.startup['mk-train'].value then
 	for _,wagon in pairs(data.raw['cargo-wagon']) do
-		if wagon.name:find("vehicle-") then	
+		if wagon.name:find("vehicle-wagon",1,true) then	
 			wagon.max_speed = 3.5
 		end
 	end
@@ -52,7 +52,7 @@ end
 
 if mods['EvenMoreLight'] then
 	for _,train in pairs(data.raw['locomotive']) do
-		if train.name:find("electric-") then
+		if train.name:find("electric-locomotive-mk",1,true) then
 			train.front_light =
 				{
 					{
@@ -101,7 +101,7 @@ end
 
 if mods['bobvehicleequipment'] then
 	if settings.startup['bobmods-vehicleequipment-enablevehiclegrids'].value then
-		data.raw['locomotive']['electric-locomotive'].equipment_grid = "bob-locomotive"
+		data.raw['locomotive']['electric-locomotive-mk1'].equipment_grid = "bob-locomotive"
 		if settings.startup['mk-train'] then
 			data.raw['locomotive']['electric-locomotive-mk2'].equipment_grid = "bob-locomotive-2"
 			data.raw['locomotive']['electric-locomotive-mk3'].equipment_grid = "bob-locomotive-3"

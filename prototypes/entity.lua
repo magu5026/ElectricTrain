@@ -1,6 +1,6 @@
 local e_loc = table.deepcopy(data.raw['locomotive']['locomotive'])
-e_loc.name = "electric-locomotive"
-e_loc.minable.result = "electric-locomotive"
+e_loc.name = "electric-locomotive-mk1"
+e_loc.minable.result = "electric-locomotive-mk1"
 e_loc.burner =	{effectivity = 1, fuel_inventory_size = 1}
 
 				
