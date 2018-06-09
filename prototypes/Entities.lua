@@ -89,7 +89,7 @@ provider.energy_source =
 							type = "electric",
 							buffer_capacity = "2000KJ",
 							usage_priority = "primary-input",
-							input_flow_limit = "2000KW",
+							input_flow_limit = "2100KW",
 							output_flow_limit = "0W"
 						}
 provider.energy_production = "0W"
