@@ -69,10 +69,18 @@ if mods["bobvehicleequipment"] then
 	
 		data.raw['locomotive']['electric-locomotive'].equipment_grid = "bob-locomotive"
 		data.raw["locomotive"]["electric-locomotive-mk2"].equipment_grid = "bob-locomotive-2"
-		data.raw["cargo-wagon"]["cargo-wagon-mk2"].equipment_grid = "bob-cargo-wagon-2"
 		data.raw["locomotive"]["electric-locomotive-mk3"].equipment_grid = "bob-locomotive-3"
+		data.raw["cargo-wagon"]["cargo-wagon-mk2"].equipment_grid = "bob-cargo-wagon-2"
 		data.raw["cargo-wagon"]["cargo-wagon-mk3"].equipment_grid = "bob-cargo-wagon-3"
 		
 	end
 	
+end
+
+if not settings.startup["hybrid-train"].value then
+
+	data.raw['locomotive']['electric-locomotive'].burner = {effectivity = 1, fuel_inventory_size = 0}
+	data.raw["locomotive"]["electric-locomotive-mk2"].burner = {effectivity = 1, fuel_inventory_size = 0}
+	data.raw["locomotive"]["electric-locomotive-mk3"].burner = {effectivity = 1, fuel_inventory_size = 0}
+
 end
