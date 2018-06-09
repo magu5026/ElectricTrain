@@ -2,13 +2,13 @@ ElectricTrains = ElectricTrains or {}
 ElectricTrains.Trains = ElectricTrains.Trains or {}
 ElectricTrains.Functions = ElectricTrains.Functions or {}
 
+
 MaxPower = 10666.6666666667
 
 
 function ElectricTrains.Functions.ADDTRAIN ( nama, multie )
 	table.insert( ElectricTrains.Trains, { name = nama, multy = multie } )
 end
-
 
 ElectricTrains.Functions.ADDTRAIN( "electric-locomotive", 1 )
 ElectricTrains.Functions.ADDTRAIN( "electric-locomotive-mk2", 1.5 )
@@ -21,39 +21,47 @@ local function ONLOAD ()
 end
 
 
+local function counter( list )
+	local i = 0
+	for _,p in pairs (list) do
+		i = i + 1
+	end
+	return i
+end 
+
+
 local function ONTICK ()
 	local PowerNeed = 0
 	local PowerStorage = 0
 	local PowerAvaible = 0
 	local PowerPer = 0
 	if global.TrainsList ~= nil and global.AccuList ~= nil then
-		for _, p in pairs( global.TrainsList ) do
+		for _,p in pairs( global.TrainsList ) do
 			PowerNeed = PowerNeed + ( ( MaxPower * p.multi ) - p.entitie.energy )
 		end
-		for _, p in pairs( global.AccuList ) do
+		for _,p in pairs( global.AccuList ) do
 			PowerStorage = PowerStorage + p.energy
 		end
 		PowerAvaible = PowerStorage - PowerNeed
 		if PowerAvaible >= 0 then
-			for _, p in pairs( global.TrainsList ) do
+			for _,p in pairs( global.TrainsList ) do
 				p.entitie.energy = MaxPower * p.multi
 			end
-			PowerPer = PowerAvaible / #global.AccuList
-			for _, p in pairs( global.AccuList ) do
+			PowerPer = PowerAvaible / counter( global.AccuList )
+			for _,p in pairs( global.AccuList ) do
 				p.energy = PowerPer
 			end
 		else
-			for _, p in pairs( global.AccuList ) do
+			for _,p in pairs( global.AccuList ) do
 				p.energy = 0
 			end
-			PowerPer = ( PowerNeed + PowerAvaible ) / #global.TrainsList
-			for _, p in pairs( global.TrainsList ) do
+			PowerPer = ( PowerNeed + PowerAvaible ) / counter( global.TrainsList)
+			for _,p in pairs( global.TrainsList ) do
 				p.entitie.energy = PowerPer
 			end
 		end
 	end
 end
-
 
 local function ONBUILT ( event )
 	local entity = event.created_entity
