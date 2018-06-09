@@ -7,7 +7,7 @@ data:extend(
 		enabled = false,
 		ingredients =
 		{
-			{"diesel-locomotive", 1},
+			{"locomotive", 1},
 			{"battery", 10},
 			{"electric-engine-unit", 20}
 		},
@@ -48,7 +48,6 @@ data:extend(
 		ingredients =
 		{
 			{"cargo-wagon", 1},
-			{"iron-gear-wheel", 10},
 			{"iron-plate", 20},
 			{"steel-plate", 20}
 		},
@@ -62,7 +61,6 @@ data:extend(
 		ingredients =
 		{
 			{"cargo-wagon-mk2", 1},
-			{"iron-gear-wheel", 10},
 			{"iron-plate", 20},
 			{"steel-plate", 20}
 		},

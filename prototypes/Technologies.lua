@@ -85,9 +85,9 @@ data:extend(
 		order = "c-g-a-c",
 	},
 	
-	--[[{
+	{
 		type = "technology",
-		name = "automated-rail-transportation-mk2",
+		name = "cargo-wagon-mk2",
 		icon = "__ElectricTrain__/graphics/railway_mk2.png",
 		icon_size = 128,
 		effects =
@@ -97,7 +97,7 @@ data:extend(
 				recipe = "cargo-wagon-mk2"
 			}
 		},
-		prerequisites = {"automated-rail-transportation"},
+		prerequisites = {"railway"},
 		unit =
 		{
 			count = 100,
@@ -113,7 +113,7 @@ data:extend(
 	
 	{
 		type = "technology",
-		name = "automated-rail-transportation-mk3",
+		name = "cargo-wagon-mk3",
 		icon = "__ElectricTrain__/graphics/railway_mk3.png",
 		icon_size = 128,
 		effects =
@@ -123,7 +123,7 @@ data:extend(
 				recipe = "cargo-wagon-mk3"
 			}
 		},
-		prerequisites = {"automated-rail-transportation-mk2"},
+		prerequisites = {"cargo-wagon-mk2"},
 		unit =
 		{
 			count = 100,
@@ -136,6 +136,6 @@ data:extend(
 			time = 20
 		},
 		order = "c-g-b-b",
-	},]]--
+	},
 
 })

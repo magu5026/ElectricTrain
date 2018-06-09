@@ -150,12 +150,12 @@ data:extend(
 		joint_distance = 4,
 		energy_per_hit_point = 5,
 		resistances = rolling_stock_resistances(),
-		energy_source =
+		burner =
 		{
-			type = "burner",
+			fuel_category = "chemical",
 			effectivity = 0.01,
 			fuel_inventory_size = 0,
-		},
+        },
 		front_light = rolling_stock_front_light(),
 		back_light = rolling_stock_back_light(),
 		stand_by_light = rolling_stock_stand_by_light(),
@@ -275,12 +275,12 @@ data:extend(
 		joint_distance = 4,
 		energy_per_hit_point = 5,
 		resistances = rolling_stock_resistances(),
-		energy_source =
+		burner =
 		{
-			type = "burner",
+			fuel_category = "chemical",
 			effectivity = 0.01,
 			fuel_inventory_size = 0,
-		},
+        },
 		front_light = rolling_stock_front_light(),
 		back_light = rolling_stock_back_light(),
 		stand_by_light = rolling_stock_stand_by_light(),
@@ -400,12 +400,12 @@ data:extend(
 		joint_distance = 4,
 		energy_per_hit_point = 5,
 		resistances = rolling_stock_resistances(),
-		energy_source =
+		burner =
 		{
-			type = "burner",
+			fuel_category = "chemical",
 			effectivity = 0.01,
 			fuel_inventory_size = 0,
-		},
+        },
 		ffront_light = rolling_stock_front_light(),
 		back_light = rolling_stock_back_light(),
 		stand_by_light = rolling_stock_stand_by_light(),
