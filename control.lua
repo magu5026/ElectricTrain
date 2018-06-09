@@ -1,6 +1,4 @@
 require("help_functions")
-TrainEntityList = {"electric-locomotive","electric-locomotive-mk2","electric-locomotive-mk3"}
-
 	
 local function ONLOAD()
 	global.TrainList = global.TrainList or {}
@@ -45,7 +43,7 @@ local function ONBUILT(event)
 	if entity.name == "power-provider" then
 		table.insert(global.ProviderList,entity)
 	end
-	if exists(TrainEntityList,entity.name) then
+	if exists(ElectricTrainNameList,entity.name) then
 		table.insert(global.TrainList,entity)
 	end
 end
@@ -60,7 +58,7 @@ local function ONREMOVE(event)
 			end
 		end
 	end				
-	if exists(TrainEntityList,entity.name) then
+	if exists(ElectricTrainNameList,entity.name) then
 		for index,train in pairs(global.TrainList) do
 			if train == entity then
 				table.remove(global.TrainList,index)
@@ -76,7 +74,7 @@ script.on_configuration_changed(function(data)
 		local alltrain = game.surfaces[1].find_entities_filtered{type="locomotive"}
 		local e_loclist = {}
 		for _,train in pairs(alltrain) do
-			if exists(TrainEntityList,train.name) then 
+			if exists(ElectricTrainNameList,train.name) then 
 				table.insert(e_loclist,train) 
 			end
 		end	

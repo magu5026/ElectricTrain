@@ -61,9 +61,8 @@ end
 
 
 if mods['Vehicle Wagon'] and settings.startup['mk-train'].value then
-	wagons = {"loaded-vehicle-wagon-truck","loaded-vehicle-wagon-tarp","loaded-vehicle-wagon-car","loaded-vehicle-wagon-tank","vehicle-wagon"}
 	for _,wagon in pairs(data.raw['cargo-wagon']) do
-		if exists(wagons,wagon.name) then	
+		if exists(VehicleWagonNameList,wagon.name) then	
 			wagon.max_speed = 3.5
 		end
 	end
@@ -72,7 +71,7 @@ end
 
 if mods['EvenMoreLight'] then
 	for _,train in pairs(data.raw['locomotive']) do
-		if exists(TrainEntityList,train.name) then
+		if exists(ElectricTrainNameList,train.name) then
 			train.front_light =
 				{
 					{
