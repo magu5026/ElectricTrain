@@ -79,10 +79,8 @@ end
 function ONCONFIG(data)
 	init()
 	if migration(data) then
-	game.print(data.mod_changes["ElectricTrain"].old_version < "0.15.11")
 		local old_version = versionformat(data.mod_changes["ElectricTrain"].old_version)
 		if old_version < "00.15.11" then
-		game.print("test")
 			local alltrain = game.surfaces[1].find_entities_filtered{type="locomotive"}
 			local e_loclist = {}
 			for _,train in pairs(alltrain) do
