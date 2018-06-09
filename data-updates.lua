@@ -1,3 +1,5 @@
+require("help_functions")
+
 if settings.startup['vanilla-order'].value then
 	data.raw['item-with-entity-data']['electric-locomotive'].subgroup = "transport"
 	data.raw['item-with-entity-data']['electric-locomotive'].order = "a[train-system]-f[diesel-locomotive]-a"
@@ -60,7 +62,7 @@ end
 
 if mods['Vehicle Wagon'] and settings.startup['mk-train'].value then
 	wagons = {"loaded-vehicle-wagon-truck","loaded-vehicle-wagon-tarp","loaded-vehicle-wagon-car","loaded-vehicle-wagon-tank","vehicle-wagon"}
-	for _,wagon in pairs(data.raw['fluid-wagon']) do
+	for _,wagon in pairs(data.raw['cargo-wagon']) do
 		if exists(wagons,wagon.name) then	
 			wagon.max_speed = 3.5
 		end
