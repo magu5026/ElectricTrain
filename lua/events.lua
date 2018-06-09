@@ -11,7 +11,7 @@ end
 local function Migration(data)
 	if NeedMigration(data,MODNAME) then
 		local old_version = GetOldVersion(data,MODNAME)
-		if old_version < "00.16.03" then
+		if old_version < "00.16.04" then
 			global.ElectricTrain.TrainList = {}
 			global.ElectricTrain.ProviderList = {}
 			local all_trains = game.surfaces[1].find_entities_filtered{type="locomotive"}
@@ -20,8 +20,12 @@ local function Migration(data)
 					table.insert(global.ElectricTrain.TrainList,train) 
 				end
 			end	
-			local providerlist = game.surfaces[1].find_entities_filtered{name="power-provider"} or {}
-			global.ElectricTrain.ProviderList = providerlist
+			local all_ielectrics = game.surfaces[1].find_entities_filtered{type="electric-energy-interface"}
+			for _,provider in pairs(all_ielectrics) do
+				if provider.name:find("power-provider",1,true) then
+					table.insert(global.ElectricTrain.ProviderList,provider) 
+				end
+			end			
 		end
 	end
 end
@@ -32,11 +36,19 @@ local function TrainPower(event)
 	local provider_power = 0
 	local rest_power = 0
 	local split_power = 0
-	for _,train in pairs(global.ElectricTrain.TrainList) do	
-		need_power = need_power - train.energy + train.prototype.max_energy_usage + 1
+	for _,train in pairs(global.ElectricTrain.TrainList) do
+		if train and train.valid then
+			need_power = need_power - train.energy + train.prototype.max_energy_usage + 1
+		else
+			Remove(global.ElectricTrain.TrainList,train)
+		end
 	end
 	for _,provider in pairs(global.ElectricTrain.ProviderList) do
-		provider_power = provider_power + provider.energy
+		if provider and provider.valid then
+			provider_power = provider_power + provider.energy
+		else
+			Remove(global.ElectricTrain.ProviderList,provider)
+		end
 	end
 	rest_power = provider_power - need_power
 	if rest_power >= 0 then
@@ -78,7 +90,6 @@ local function LocRemove(entity)
 		Remove(global.ElectricTrain.TrainList,entity)
 	end
 end
-
 
 
 
