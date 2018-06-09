@@ -54,6 +54,28 @@ data:extend(
 		place_result = "cargo-wagon-mk3",
 		stack_size = 5
 	},
+	
+	{
+		type = "item-with-entity-data",
+		name = "fluid-wagon-mk2",
+		icon = "__base__/graphics/icons/fluid-wagon.png",
+		flags = {"goes-to-quickbar"},
+		subgroup = "electric-transport",
+		order = "c-a",
+		place_result = "fluid-wagon-mk2",
+		stack_size = 5
+	},
+	
+	{
+		type = "item-with-entity-data",
+		name = "fluid-wagon-mk3",
+		icon = "__base__/graphics/icons/fluid-wagon.png",
+		flags = {"goes-to-quickbar"},
+		subgroup = "electric-transport",
+		order = "c-b",
+		place_result = "fluid-wagon-mk3",
+		stack_size = 5
+	},
 
 	{
 		type = "item",
@@ -61,7 +83,7 @@ data:extend(
 		icon = "__ElectricTrain__/graphics/power-provider-icon.png",
 		flags = {"goes-to-quickbar"},
 		subgroup = "electric-transport",
-		order = "c-a",
+		order = "d",
 		place_result = "power-provider",
 		stack_size = 50
 	},
