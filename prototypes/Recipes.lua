@@ -43,42 +43,48 @@ data:extend(
 		
 	{
 		type = "recipe",
-		name = "cargo-wagon-mk2",
-		enabled = false,
-		ingredients =
-		{
-			{"cargo-wagon", 1},
-			{"iron-plate", 20},
-			{"steel-plate", 20}
-		},
-		result = "cargo-wagon-mk2"
-	},
-	
-	{
-		type = "recipe",
-		name = "cargo-wagon-mk3",
-		enabled = false,
-		ingredients =
-		{
-			{"cargo-wagon-mk2", 1},
-			{"iron-plate", 20},
-			{"steel-plate", 20}
-		},
-		result = "cargo-wagon-mk3"
-	},
-	
-	{
-		type = "recipe",
 		name = "power-provider",
 		energy_required = 10,
 		enabled = false,
 		ingredients =
 		{
 			{"accumulator", 2},
-			{"battery", 5},
-			{"electronic-circuit", 10}
+			{"advanced-circuit", 1}
 		},
 		result = "power-provider"
-	},
-	
+	},	
 })
+
+
+function cargo_rec()
+	data:extend(
+		{
+			{
+				type = "recipe",
+				name = "cargo-wagon-mk2",
+				enabled = false,
+				ingredients =
+				{
+					{"cargo-wagon", 1},
+					{"iron-gear-wheel", 20},
+					{"steel-plate", 20}
+				},
+				result = "cargo-wagon-mk2"
+			},
+			
+			{
+				type = "recipe",
+				name = "cargo-wagon-mk3",
+				enabled = false,
+				ingredients =
+				{
+					{"cargo-wagon-mk2", 1},
+					{"iron-gear-wheel", 20},
+					{"steel-plate", 20}
+				},
+				result = "cargo-wagon-mk3"
+			},
+		})	
+
+end
+

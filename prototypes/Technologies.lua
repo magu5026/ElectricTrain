@@ -28,7 +28,7 @@ data:extend(
 			},
 			time = 20
 		},
-		order = "c-g-a-a",
+		order = "c-g-a-a-a",
 	},
 	
 	{
@@ -55,7 +55,7 @@ data:extend(
 			},
 			time = 20
 		},
-		order = "c-g-a-b",
+		order = "c-g-a-a-b",
 	},
 	
 	{
@@ -82,13 +82,13 @@ data:extend(
 			},
 			time = 20
 		},
-		order = "c-g-a-c",
+		order = "c-g-a-a-c",
 	},
 	
 })
 
 
-function cargo()
+function cargo_tech()
 	data:extend(
 		{
 
@@ -115,7 +115,7 @@ function cargo()
 					},
 					time = 20
 				},
-				order = "c-g-b-a",
+				order = "c-g-a-a-d",
 			},
 			
 			{
@@ -142,7 +142,7 @@ function cargo()
 					},
 					time = 20
 				},
-				order = "c-g-b-b",
+				order = "c-g-a-a-e",
 			},
 		})	
 

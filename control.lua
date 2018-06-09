@@ -1,100 +1,123 @@
-ElectricTrains = ElectricTrains or {}
-ElectricTrains.Trains = ElectricTrains.Trains or {}
-ElectricTrains.Functions = ElectricTrains.Functions or {}
+require "util"
+
+local TrainEntityList =
+	{
+		{ name = "electric-locomotive", multi = 1 },
+		{ name = "electric-locomotive-mk2", multi = 1.5 },
+		{ name = "electric-locomotive-mk3", multi = 2 }
+	}
+	
+	
+local ProviderEntityList =
+	{
+		{ name = "power-provider" }
+	}
 
 
-MaxPower = 10666.6666666667
+BasicPower = 10001
 
 
-function ElectricTrains.Functions.ADDTRAIN ( nama, multie )
-	table.insert( ElectricTrains.Trains, { name = nama, multy = multie } )
-end
-
-ElectricTrains.Functions.ADDTRAIN( "electric-locomotive", 1 )
-ElectricTrains.Functions.ADDTRAIN( "electric-locomotive-mk2", 1.5 )
-ElectricTrains.Functions.ADDTRAIN( "electric-locomotive-mk3", 2 )
-
-
-local function ONLOAD ()
-	global.TrainsList = global.TrainsList or {}
-	global.AccuList = global.AccuList or {}
+local function ONLOAD()
+	global.TrainList = global.TrainList or {}
+	global.ProviderList = global.ProviderList or {}
 end
 
 
 local function counter( list )
 	local i = 0
-	for _,p in pairs (list) do
+	for index,element in pairs( list ) do
 		i = i + 1
 	end
 	return i
 end 
 
 
-local function ONTICK ()
-	local PowerNeed = 0
-	local PowerStorage = 0
-	local PowerAvaible = 0
-	local PowerPer = 0
-	if global.TrainsList ~= nil and global.AccuList ~= nil then
-		for _,p in pairs( global.TrainsList ) do
-			PowerNeed = PowerNeed + ( ( MaxPower * p.multi ) - p.entitie.energy )
+local function ONTICK()
+	local TrainPower = 0
+	local ProviderPower = 0
+	local RestPower = 0
+	local SplitPower = 0
+	
+	
+	if global.TrainList ~= nil and global.ProviderList ~= nil then
+	
+		for index,element in pairs( global.TrainList ) do
+			TrainPower = TrainPower + ( ( BasicPower * element.multi ) - element.train.energy )
+			--element.train.insert("test-item")
 		end
-		for _,p in pairs( global.AccuList ) do
-			PowerStorage = PowerStorage + p.energy
+		for index,element in pairs( global.ProviderList ) do
+			ProviderPower = ProviderPower + element.energy
 		end
-		PowerAvaible = PowerStorage - PowerNeed
-		if PowerAvaible >= 0 then
-			for _,p in pairs( global.TrainsList ) do
-				p.entitie.energy = MaxPower * p.multi
+		
+		RestPower = ProviderPower - TrainPower
+				
+		if RestPower >= 0 then
+		
+			for index,element in pairs( global.TrainList ) do
+				element.train.energy = BasicPower * element.multi
 			end
-			PowerPer = PowerAvaible / counter( global.AccuList )
-			for _,p in pairs( global.AccuList ) do
-				p.energy = PowerPer
+			
+			SplitPower = RestPower / counter( global.ProviderList )
+			
+			for index,element in pairs( global.ProviderList ) do
+				element.energy = SplitPower
 			end
+			
 		else
-			for _,p in pairs( global.AccuList ) do
-				p.energy = 0
+		
+			for index,element in pairs( global.ProviderList ) do
+				element.energy = 0
 			end
-			PowerPer = ( PowerNeed + PowerAvaible ) / counter( global.TrainsList)
-			for _,p in pairs( global.TrainsList ) do
-				p.entitie.energy = PowerPer
+			
+			SplitPower = ProviderPower / counter( global.TrainList)
+			
+			for index,element in pairs( global.TrainList ) do
+				element.train.energy = SplitPower
 			end
+			
 		end
 	end
 end
 
-local function ONBUILT ( event )
-	local entity = event.created_entity
-	if entity.name == "power-provider" then
-		table.insert( global.AccuList, entity )
-	end
+local function ONBUILT ( item )
+	local entity = item.created_entity
+	
+	if entity.type == "electric-energy-interface" then
+		for index,element in pairs( ProviderEntityList ) do
+			if entity.name == element.name then
+				table.insert( global.ProviderList, entity )
+			end
+		end
+	end	
+	
 	if entity.type == "locomotive" then
-		for _, o in pairs( ElectricTrains.Trains ) do
-			if entity.name == o.name then
-				table.insert( global.TrainsList, { multi = o.multy, entitie = entity } )
+		for index,element in pairs( TrainEntityList ) do
+			if entity.name == element.name then
+				table.insert( global.TrainList, { multi = element.multi, train = entity } )
 			end
 		end
 	end
-
 end
 
 
-local function ONREMOVE ( event )
-	local entity = event.entity
-	if entity.name == "power-provider" then
-		if global.AccuList ~= nil then
-			for index, l in pairs( global.AccuList ) do
-				if entity == l then
-					global.AccuList[index] = nil
+local function ONREMOVE ( item )
+	local entity = item.entity
+	
+	if entity.type == "electric-energy-interface" then
+		if global.ProviderList ~= nil then
+			for index, element in pairs( global.ProviderList ) do
+				if entity == element then
+					global.ProviderList[index] = nil
 				end
 			end
 		end
 	end
+		
 	if entity.type == "locomotive" then
-		if global.TrainsList ~= nil then
-			for index, l in pairs( global.TrainsList ) do
-				if entity == l.entitie then
-					global.TrainsList[index] = nil
+		if global.TrainList ~= nil then
+			for index, element in pairs( global.TrainList ) do
+				if entity == element.train then
+					global.TrainList[index] = nil
 				end
 			end
 		end
@@ -102,13 +125,36 @@ local function ONREMOVE ( event )
 end
 
 
-script.on_configuration_changed( function() ONLOAD() end )
+script.on_configuration_changed
+	( 
+		function() 
+			ONLOAD() 
+			
+			if global.TrainsList ~= nil and global.AccuList ~= nil then
+			
+				for index,element in pairs(global.TrainsList) do
+					table.insert( global.TrainList , { multi = element.multi, train = element.entitie } )
+				end
+				for index,element in pairs(global.AccuList) do
+					--element.electric_buffer_size = 10000
+					--element.electric_input_flow_limit = 10000		
+					table.insert( global.ProviderList , element )
+				end
+				global.TrainsList = nil
+				global.AccuList = nil
+			end
+		end
+	)
 
 
-script.on_init( function()
-	ONLOAD()
-end )
 
+
+
+
+
+
+
+script.on_init( function() ONLOAD() end )
 
 script.on_event( defines.events.on_tick, ONTICK )
 script.on_event( defines.events.on_built_entity, ONBUILT )

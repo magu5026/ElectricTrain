@@ -2,9 +2,8 @@ local e_loc = table.deepcopy(data.raw['locomotive']['locomotive'])
 e_loc.name = "electric-locomotive"
 e_loc.minable = {mining_time = 1, result = "electric-locomotive"}
 e_loc.burner =	{
-					fuel_category = "chemical",
 					effectivity = 1,
-					fuel_inventory_size = 0,
+					fuel_inventory_size = 1
 				}
 
 				
@@ -19,9 +18,8 @@ e_loc2.braking_force = 15
 e_loc2.friction_force = 0.375
 e_loc2.air_resistance = 0.005625
 e_loc2.burner =	{
-					fuel_category = "chemical",
 					effectivity = 1,
-					fuel_inventory_size = 0,
+					fuel_inventory_size = 2
 				}				
 				
 				
@@ -36,9 +34,8 @@ e_loc3.braking_force = 20
 e_loc3.friction_force = 0.25
 e_loc3.air_resistance = 0.00375
 e_loc3.burner =	{
-					fuel_category = "chemical",
 					effectivity = 1,
-					fuel_inventory_size = 0,
+					fuel_inventory_size = 3
 				}
 				
 				
@@ -87,36 +84,19 @@ provider.picture =
 						priority = "extra-high",
 						width = 124,
 						height = 103,
-						shift = {0.6875, -0.203125}
+						shift = {0.6875, -0.203125},
 					}
-provider.charge_animation =
-							{
-								filename = "__ElectricTrain__/graphics/power-provider-charge-animation.png",
-								width = 138,
-								height = 135,
-								line_length = 8,
-								frame_count = 24,
-								shift = {0.46875, -0.640625},
-								animation_speed = 0.5
-							}
-provider.discharge_light = {intensity = 0.7, size = 7}
-provider.charge_light = {intensity = 0.3, size = 7}
-provider.discharge_animation =
-								{
-									filename = "__ElectricTrain__/graphics/power-provider-discharge-animation.png",
-									width = 147,
-									height = 128,
-									line_length = 8,
-									frame_count = 24,
-									shift = {0.390625, -0.53125},
-									animation_speed = 0.5
-								}
-provider.discharge_cooldown = 60
 
-				
+
+data:extend{e_loc,e_loc2,e_loc3,cargo2,cargo3,provider,test}
 
 
 
 
 
-data:extend{e_loc,e_loc2,e_loc3,cargo2,cargo3,provider}
+
+
+
+
+
+

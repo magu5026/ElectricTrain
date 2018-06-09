@@ -65,5 +65,5 @@ data:extend(
 		place_result = "power-provider",
 		stack_size = 50
 	},
-	
+
 })
