@@ -85,57 +85,65 @@ data:extend(
 		order = "c-g-a-c",
 	},
 	
-	{
-		type = "technology",
-		name = "cargo-wagon-mk2",
-		icon = "__ElectricTrain__/graphics/railway_mk2.png",
-		icon_size = 128,
-		effects =
-		{
-			{
-				type = "unlock-recipe",
-				recipe = "cargo-wagon-mk2"
-			}
-		},
-		prerequisites = {"railway"},
-		unit =
-		{
-			count = 100,
-			ingredients =
-			{
-				{"science-pack-1", 2},
-				{"science-pack-2", 1}				
-			},
-			time = 20
-		},
-		order = "c-g-b-a",
-	},
-	
-	{
-		type = "technology",
-		name = "cargo-wagon-mk3",
-		icon = "__ElectricTrain__/graphics/railway_mk3.png",
-		icon_size = 128,
-		effects =
-		{
-			{
-				type = "unlock-recipe",
-				recipe = "cargo-wagon-mk3"
-			}
-		},
-		prerequisites = {"cargo-wagon-mk2"},
-		unit =
-		{
-			count = 100,
-			ingredients =
-			{
-				{"science-pack-1", 2},
-				{"science-pack-2", 1},
-				{"science-pack-3", 1},
-			},
-			time = 20
-		},
-		order = "c-g-b-b",
-	},
-
 })
+
+
+function cargo()
+	data:extend(
+		{
+
+			{			
+				type = "technology",
+				name = "cargo-wagon-mk2",
+				icon = "__ElectricTrain__/graphics/railway_mk2.png",
+				icon_size = 128,
+				effects =
+				{
+					{
+						type = "unlock-recipe",
+						recipe = "cargo-wagon-mk2"
+					}
+				},
+				prerequisites = {"railway"},
+				unit =
+				{
+					count = 100,
+					ingredients =
+					{
+						{"science-pack-1", 2},
+						{"science-pack-2", 1}				
+					},
+					time = 20
+				},
+				order = "c-g-b-a",
+			},
+			
+			{
+				type = "technology",
+				name = "cargo-wagon-mk3",
+				icon = "__ElectricTrain__/graphics/railway_mk3.png",
+				icon_size = 128,
+				effects =
+				{
+					{
+						type = "unlock-recipe",
+						recipe = "cargo-wagon-mk3"
+					}
+				},
+				prerequisites = {"cargo-wagon-mk2"},
+				unit =
+				{
+					count = 100,
+					ingredients =
+					{
+						{"science-pack-1", 2},
+						{"science-pack-2", 1},
+						{"science-pack-3", 1},
+					},
+					time = 20
+				},
+				order = "c-g-b-b",
+			},
+		})	
+
+end

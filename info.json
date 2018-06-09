@@ -1,9 +1,9 @@
 {
 	"name":"ElectricTrain",
 	"author":"magu5026",
-	"version":"0.15.1",
+	"version":"0.15.2",
 	"title":"Electric Train",
 	"description":"Add Electric Trains.",
 	"factorio_version":"0.15",
-	"dependencies": ["base >= 0.15.0"]
+	"dependencies": ["base >= 0.15.10"]
 }

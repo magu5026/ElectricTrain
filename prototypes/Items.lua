@@ -61,7 +61,7 @@ data:extend(
 		icon = "__ElectricTrain__/graphics/power-provider-icon.png",
 		flags = {"goes-to-quickbar"},
 		subgroup = "electric-transport",
-		order = "c",
+		order = "c-a",
 		place_result = "power-provider",
 		stack_size = 50
 	},
