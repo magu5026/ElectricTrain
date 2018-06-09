@@ -57,7 +57,7 @@ fwag2.ingredients =
 		{"iron-gear-wheel", 10},
 		{"steel-plate", 16},
 		{"pipe", 8},
-		{"storage-tank", 3}	
+		{"storage-tank", 1}	
 	}
 fwag2.result = "fluid-wagon-mk2"
 
@@ -69,7 +69,7 @@ fwag3.ingredients =
 		{"iron-gear-wheel", 10},
 		{"steel-plate", 16},
 		{"pipe", 8},
-		{"storage-tank", 3}	
+		{"storage-tank", 1}	
 	}
 fwag3.result = "fluid-wagon-mk3"
 

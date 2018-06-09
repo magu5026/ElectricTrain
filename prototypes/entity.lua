@@ -59,26 +59,26 @@ cargo3.air_resistance = 0.002
 
 local fluid2 = table.deepcopy(data.raw['fluid-wagon']['fluid-wagon'])				
 fluid2.name = "fluid-wagon-mk2"
-fluid2.total_capacity = 25000 * 3 * 1.5
+fluid2.capacity = 25000 * 1.5
 fluid2.minable.result = "fluid-wagon-mk2"
 fluid2.max_health = 800
-fluid2.weight = 4500
+fluid2.weight = 1500
 fluid2.max_speed = 2.5
 fluid2.braking_force = 4
 fluid2.friction_force = 0.375
-fluid2.air_resistance = 0.0375
+fluid2.air_resistance = 0.003
 
 
 local fluid3 = table.deepcopy(data.raw['fluid-wagon']['fluid-wagon'])				
 fluid3.name = "fluid-wagon-mk3"
-fluid3.total_capacity = 25000 * 3 * 2
+fluid3.capacity = 25000 * 2
 fluid3.minable.result = "fluid-wagon-mk3"
 fluid3.max_health = 1000
-fluid3.weight = 6000
+fluid3.weight = 2000
 fluid3.max_speed = 3.5
 fluid3.braking_force = 5
 fluid3.friction_force = 0.25
-fluid3.air_resistance = 0.025
+fluid3.air_resistance = 0.003
 
 
 data:extend({cargo2,cargo3,fluid2,fluid3})

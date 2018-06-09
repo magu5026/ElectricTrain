@@ -1,9 +1,9 @@
-data.raw['item-with-entity-data']['locomotive'].subgroup = "electric-transport"
+data.raw['item-with-entity-data']['locomotive'].subgroup = "electric-transport-log"
 data.raw['item-with-entity-data']['locomotive'].order = "a"
-data.raw['item-with-entity-data']['cargo-wagon'].subgroup = "electric-transport"
-data.raw['item-with-entity-data']['cargo-wagon'].order = "b"
-data.raw['item-with-entity-data']['fluid-wagon'].subgroup = "electric-transport"
-data.raw['item-with-entity-data']['fluid-wagon'].order = "c"
+data.raw['item-with-entity-data']['cargo-wagon'].subgroup = "electric-transport-cargo"
+data.raw['item-with-entity-data']['cargo-wagon'].order = "a"
+data.raw['item-with-entity-data']['fluid-wagon'].subgroup = "electric-transport-fluid"
+data.raw['item-with-entity-data']['fluid-wagon'].order = "a"
 
 
 
