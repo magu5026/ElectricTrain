@@ -70,7 +70,7 @@ data:extend(
 				recipe = "electric-locomotive-mk3"
 			}
 		},
-		prerequisites = {"electric-locomotive-mk2"},
+		prerequisites = {"electric-locomotive-mk2", "advanced-electronics-2"},
 		unit =
 		{
 			count = 150,
