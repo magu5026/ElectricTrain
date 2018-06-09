@@ -28,7 +28,10 @@ e_loc3.braking_force = 20
 e_loc3.friction_force = 0.25
 e_loc3.air_resistance = 0.00375
 e_loc3.burner =	{effectivity = 1, fuel_inventory_size = 3}
-				
+	
+
+data:extend({e_loc,e_loc2,e_loc3})
+	
 				
 local cargo2 = table.deepcopy(data.raw['cargo-wagon']['cargo-wagon'])				
 cargo2.name = "cargo-wagon-mk2"
@@ -78,6 +81,9 @@ fluid3.friction_force = 0.25
 fluid3.air_resistance = 0.025
 
 
+data:extend({cargo2,cargo3,fluid2,fluid3})
+
+
 local provider = table.deepcopy(data.raw['electric-energy-interface']['electric-energy-interface'])	
 provider.name = "power-provider"
 provider.icon = "__ElectricTrain__/graphics/power-provider-icon.png"
@@ -88,7 +94,7 @@ provider.energy_source =
 						{
 							type = "electric",
 							buffer_capacity = "2000KJ",
-							usage_priority = "primary-input",
+							usage_priority = "secondary-input",
 							input_flow_limit = "2100KW",
 							output_flow_limit = "0W"
 						}
@@ -105,15 +111,4 @@ provider.picture =
 					}
 
 
-data:extend{e_loc,e_loc2,e_loc3}
-data:extend{cargo2,cargo3,fluid2,fluid3}
-data:extend{provider}
-
-
-
-
-
-
-
-
-
+data:extend({provider})
