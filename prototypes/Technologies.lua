@@ -16,7 +16,7 @@ data:extend(
 				recipe = "power-provider"
 			}			
 		},
-		prerequisites = {"railway", "electric-engine", "battery" },
+		prerequisites = {"railway", "electric-engine", "electric-energy-accumulators-1" },
 		unit =
 		{
 			count = 50,
