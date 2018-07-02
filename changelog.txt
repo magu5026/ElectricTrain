@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.5
+Date: 02. 07. 2018
+  Changes:
+    - Pull request by "shanemadden". Listen for script_raised_built and script_raised_destroy events
+---------------------------------------------------------------------------------------------------
 Version: 0.16.4
 Date: 27. 03. 2018
   Bugfixes:
