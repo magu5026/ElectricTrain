@@ -16,7 +16,6 @@ eloc3.subgroup = "electric-transport-log"
 eloc3.order = "d"
 eloc3.place_result = "electric-locomotive-mk3"
 
-
 data:extend({eloc,eloc2,eloc3})
 
 
@@ -31,7 +30,6 @@ cwag3.name = "cargo-wagon-mk3"
 cwag3.subgroup = "electric-transport-cargo"
 cwag3.order = "c"
 cwag3.place_result = "cargo-wagon-mk3"
-
 
 data:extend({cwag2,cwag3})	
 
@@ -48,7 +46,6 @@ fwag3.subgroup = "electric-transport-fluid"
 fwag3.order = "c"
 fwag3.place_result = "fluid-wagon-mk3"
 
-
 data:extend({fwag2,fwag3})
 
 
@@ -59,5 +56,12 @@ ppro.subgroup = "electric-transport-log"
 ppro.order = "e"
 ppro.place_result = "power-provider"
 
-
 data:extend({ppro})
+
+
+local fuel = table.deepcopy(data.raw['item']['raw-wood'])
+fuel.name = "electric-locomotive-fuel"
+fuel.flags = {"hidden"}
+fuel.fuel_value = "10GJ"
+	
+data:extend({fuel})

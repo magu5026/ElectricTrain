@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.6
+Date: 03. 08. 2018
+  Changes:
+    - Resolving the problem that hybrid trains have consumed fuel even though power was available.
+    - Fuel bar is now filled.
+---------------------------------------------------------------------------------------------------
 Version: 0.16.5
 Date: 02. 07. 2018
   Changes:
