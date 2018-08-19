@@ -70,6 +70,9 @@ function OnTick()
 		for i,provider in pairs(global.ProviderList) do
 			if provider and provider.valid then
 				provider_power = provider_power + provider.energy
+			else
+				table.remove(global.ProviderList,i)
+				global.ProviderCount = Count(global.ProviderList)
 			end
 		end
 			
@@ -84,6 +87,9 @@ function OnTick()
 						train.entity.burner.remaining_burning_fuel = fuel.fuel_value
 					end
 					need_power = need_power + fuel.fuel_value - train.entity.burner.remaining_burning_fuel				
+				else
+					table.remove(global.TrainList,i)
+					global.TrainCount = Count(global.TrainList)
 				end
 			end
 		

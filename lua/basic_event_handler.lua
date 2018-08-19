@@ -20,15 +20,18 @@ function OnConfigurationChanged(data)
 	local mod_name = "ElectricTrain"
 	if NeedMigration(data,mod_name) then
 		local old_version = GetOldVersion(data,mod_name)
-		if old_version < "00.16.06" then
-			global.ElectricTrain = {}
+		if old_version < "00.16.08" then
+			global.TrainList = {}
+			global.ProviderList = {}
+			global.TrainCount = 0
+			global.ProviderCount = 0
+			
 			for _,surface in pairs(game.surfaces) do
 				local trains = surface.find_entities_filtered{type="locomotive"}
 				for _,train in pairs(trains) do
 					if train.name:find("electric-locomotive-mk",1,true) then
 						table.insert(global.TrainList,{entity = train, last_fuel = {}})
-						global.TrainCount = Count(global.TrainList)
-						
+												
 						local fuel = game.item_prototypes['electric-locomotive-fuel']
 						train.burner.currently_burning = fuel
 						train.burner.remaining_burning_fuel = fuel.fuel_value
@@ -39,10 +42,12 @@ function OnConfigurationChanged(data)
 				for _,provider in pairs(providers) do
 					if provider.name:find("power-provider",1,true) then
 						table.insert(global.ProviderList,provider)
-						global.ProviderCount = Count(global.ProviderList)
 					end
 				end	
 			end
+			
+			global.TrainCount = Count(global.TrainList)
+			global.ProviderCount = Count(global.ProviderList)
 		end
 	end
 end
