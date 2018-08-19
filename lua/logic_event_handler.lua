@@ -19,15 +19,43 @@ function OnBuilt(event)
 end
 
 
-local function _RemoveTrain(index)
-	table.remove(global.TrainList,index)
-	global.TrainCount = Count(global.TrainList)
+function OnRemove(event)
+	local entity = event.entity
+	if entity and entity.valid then
+		if entity.name == "power-provider" and entity.type == "electric-energy-interface" then
+			for i,provider in pairs(global.ProviderList) do
+				if entity == provider then
+					table.remove(global.ProviderList,i)
+					break
+				end
+			end
+			global.ProviderCount = Count(global.ProviderList)
+		elseif entity.name:find("electric-locomotive-mk",1,true) and entity.type == "locomotive" then 
+			for i,train in pairs(global.TrainList) do
+				if entity == train.entity then
+					table.remove(global.TrainList,i)
+					break
+				end
+			end
+			global.TrainCount = Count(global.TrainList)
+		end
+	end
 end
 
 
-local function _RemoveProvider(index)
-	table.remove(global.ProviderList,index)
-	global.ProviderCount = Count(global.ProviderList)
+local function _ChangeTrainFuel()
+	for i,train in pairs(global.TrainList) do
+		if train and train.entity and train.entity.valid then
+			if train.entity.burner.currently_burning and train.entity.burner.currently_burning.name == "electric-locomotive-fuel" then
+				train.entity.burner.currently_burning = nil
+	
+				if train.last_fuel.fuel then
+					train.entity.burner.currently_burning = train.last_fuel.fuel
+					train.entity.burner.remaining_burning_fuel = train.last_fuel.fuel_value
+				end
+			end
+		end
+	end
 end
 	
 	
@@ -42,39 +70,20 @@ function OnTick()
 		for i,provider in pairs(global.ProviderList) do
 			if provider and provider.valid then
 				provider_power = provider_power + provider.energy
-			else
-				_RemoveProvider(i)
 			end
 		end
-		
-		if provider_power == 0 then 
+			
+		if provider_power > 0 then 
 			for i,train in pairs(global.TrainList) do
 				if train and train.entity and train.entity.valid then
-					if train.entity.burner.currently_burning == fuel then
-						train.entity.burner.currently_burning = nil
-										
-						if train.last_fuel then
-							train.entity.burner.currently_burning = train.last_fuel.fuel
-							train.entity.burner.remaining_burning_fuel = train.last_fuel.fuel_value
-						end
-					end
-				else
-					_RemoveTrain(i)
-				end
-			end
-		else
-			for i,train in pairs(global.TrainList) do
-				if train and train.entity and train.entity.valid then
-					if train.entity.burner.currently_burning ~= fuel then
+					if not train.entity.burner.currently_burning or train.entity.burner.currently_burning.name ~= "electric-locomotive-fuel" then
 						train.last_fuel['fuel'] = train.entity.burner.currently_burning
 						train.last_fuel['fuel_value'] = train.entity.burner.remaining_burning_fuel
-						
+				
 						train.entity.burner.currently_burning = fuel
-						train.entity.burner.remaining_burning_fuel = fuel.fuel_value		
+						train.entity.burner.remaining_burning_fuel = fuel.fuel_value
 					end
 					need_power = need_power + fuel.fuel_value - train.entity.burner.remaining_burning_fuel				
-				else
-					_RemoveTrain(i)
 				end
 			end
 		
@@ -96,6 +105,12 @@ function OnTick()
 					train.entity.burner.remaining_burning_fuel = train.entity.burner.remaining_burning_fuel + split_power
 				end
 			end
+		else
+			_ChangeTrainFuel()
+		end
+	else
+		if global.TrainCount > 0 and global.ProviderCount == 0 then
+			_ChangeTrainFuel()
 		end
 	end
 end

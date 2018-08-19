@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.7
+Date: 07. 08. 2018
+  Bugfixes:
+    - Fixed the crash when placing power provider. (https://mods.factorio.com/mod/ElectricTrain/discussion/5b68a354a16c56000abd2fe7)
+  Translation:
+    - Russian translation. (Pull request by MasterLogick)
+---------------------------------------------------------------------------------------------------
 Version: 0.16.6
 Date: 03. 08. 2018
   Changes:
@@ -8,7 +15,7 @@ Date: 03. 08. 2018
 Version: 0.16.5
 Date: 02. 07. 2018
   Changes:
-    - Pull request by "shanemadden". Listen for script_raised_built and script_raised_destroy events
+    - Pull request by "shanemadden". Listen for script_raised_built and script_raised_destroy events.
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.4
 Date: 27. 03. 2018
@@ -19,3 +26,79 @@ Version: 0.16.3
 Date: 05. 03. 2018
   Changes:
     - Rename items/entities for compatibility.
+---------------------------------------------------------------------------------------------------
+Version: 0.16.2
+  Changes:
+    - Changed fluid wagon recipes and capacities.
+    - Fluid wagon are now enabled by default.
+    - Requires factorio version 0.16.8.
+---------------------------------------------------------------------------------------------------
+Version: 0.16.1
+  Major Features:
+    - Release 0.16.
+---------------------------------------------------------------------------------------------------
+Version: 0.15.12
+  Bugfixes:
+    - Remove forgotten debug code.
+---------------------------------------------------------------------------------------------------
+Version: 0.15.11
+  Bugfixes:
+    - Some code cleaning.
+---------------------------------------------------------------------------------------------------
+Version: 0.15.10
+  Bugfixes:
+    - The next try to fix my mistake. (https://mods.factorio.com/mod/ElectricTrain/discussion/5a5f1b0dadcc441024d76eb3)
+---------------------------------------------------------------------------------------------------
+Version: 0.15.9
+  Bugfixes:
+    - Fixed a mistake. (https://mods.factorio.com/mod/ElectricTrain/discussion/5a5f1b0dadcc441024d76eb3)
+---------------------------------------------------------------------------------------------------
+Version: 0.15.8
+  Minor Features:
+    - Adds 2 higher levels of fluid wagons. (disabled by default, can be activated via settings)
+---------------------------------------------------------------------------------------------------
+Version: 0.15.7
+  Changes:
+    - Add technology requirement.
+---------------------------------------------------------------------------------------------------
+Version: 0.15.6
+  Minor Features:
+    - Adding setting page.
+    - Adding setting to disable hybrid trains.	  
+  Changes:
+    - Requires factorio version 0.15.31.
+---------------------------------------------------------------------------------------------------
+Version: 0.15.5
+  Minor Features:
+    - Adding hybrid trains. They can use fuel and electricity.
+    - Adds grid size if bob's vehicle equipment is used.  
+  Changes:
+    - Code cleaning.
+---------------------------------------------------------------------------------------------------
+Version: 0.15.4
+  Bugfixes:
+    - Fixed the issue with providers. (https://mods.factorio.com/mod/ElectricTrain/discussion/5a5f1b0dadcc441024d76678)
+---------------------------------------------------------------------------------------------------
+Version: 0.15.3
+  Bugfixes:
+    - Fixed a mistake.
+---------------------------------------------------------------------------------------------------
+Version: 0.15.2
+  Changes:
+    - Deactivated the cargo wagons when bob's logistics is used.
+    - Changing order.
+    - Requires factorio version 0.15.10.
+---------------------------------------------------------------------------------------------------
+Version: 0.15.1
+  Changes:
+    - Train MK3 needs now advanced electronics 2.
+---------------------------------------------------------------------------------------------------
+Version: 0.15.0
+  Major Features:
+    - Release 0.15.
+    - Adds 2 higher levels of cargo wagons.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0 - First public release
+  Major Features:
+    - Release 0.14. (forked from LuziferSenpai)
+    - Adds 3 levels of electric trains.
