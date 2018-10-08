@@ -1,0 +1,35 @@
+{
+  "entity":
+  [
+    ["electric-locomotive-mk1", "et-electric-locomotive-mk1"],
+	["electric-locomotive-mk2", "et-electric-locomotive-mk2"],
+	["electric-locomotive-mk3", "et-electric-locomotive-mk3"],
+	["power-provider", "et-electricity-provider"],
+	["cargo-wagon-mk2", "et-cargo-wagon-mk2"],
+	["cargo-wagon-mk3", "et-cargo-wagon-mk3"],
+	["fluid-wagon-mk2", "et-fluid-wagon-mk2"],
+	["fluid-wagon-mk3", "et-fluid-wagon-mk3"]
+  ],
+  "item":
+  [
+    ["electric-locomotive-mk1", "et-electric-locomotive-mk1"],
+	["electric-locomotive-mk2", "et-electric-locomotive-mk2"],
+	["electric-locomotive-mk3", "et-electric-locomotive-mk3"],
+	["power-provider", "et-electricity-provider"],
+	["cargo-wagon-mk2", "et-cargo-wagon-mk2"],
+	["cargo-wagon-mk3", "et-cargo-wagon-mk3"],
+	["fluid-wagon-mk2", "et-fluid-wagon-mk2"],
+	["fluid-wagon-mk3", "et-fluid-wagon-mk3"],
+	["electric-locomotive-fuel", "et-electric-locomotive-fuel"]
+  ],
+  "technology":
+  [
+	["electric-railway", "et-electric-railway"],
+	["electric-railway-mk2", "et-electric-locomotive-mk2"],
+	["electric-railway-mk3", "et-electric-locomotive-mk3"],
+	["cargo-wagon-mk2", "et-cargo-wagon-mk2"],
+	["cargo-wagon-mk3", "et-cargo-wagon-mk3"],
+	["fluid-wagon-mk2", "et-fluid-wagon-mk2"],
+	["fluid-wagon-mk3", "et-fluid-wagon-mk3"]
+  ]
+}

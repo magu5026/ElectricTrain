@@ -8,9 +8,9 @@ data.raw['item-with-entity-data']['fluid-wagon'].order = "a"
 
 
 if not settings.startup['hybrid-train'].value then
-	data.raw['locomotive']['electric-locomotive-mk1'].burner = {effectivity = 1, fuel_inventory_size = 0}
-	data.raw['locomotive']['electric-locomotive-mk2'].burner = {effectivity = 1, fuel_inventory_size = 0}
-	data.raw['locomotive']['electric-locomotive-mk3'].burner = {effectivity = 1, fuel_inventory_size = 0}
+	data.raw['locomotive']['et-electric-locomotive-mk1'].burner = {effectivity = 1, fuel_inventory_size = 0}
+	data.raw['locomotive']['et-electric-locomotive-mk2'].burner = {effectivity = 1, fuel_inventory_size = 0}
+	data.raw['locomotive']['et-electric-locomotive-mk3'].burner = {effectivity = 1, fuel_inventory_size = 0}
 end
 
 
@@ -52,7 +52,7 @@ end
 
 if mods['EvenMoreLight'] then
 	for _,train in pairs(data.raw['locomotive']) do
-		if train.name:find("electric-locomotive-mk",1,true) then
+		if train.name:find("et-electric-locomotive-mk",1,true) then
 			train.front_light =
 				{
 					{
@@ -101,14 +101,14 @@ end
 
 if mods['bobvehicleequipment'] then
 	if settings.startup['bobmods-vehicleequipment-enablevehiclegrids'].value then
-		data.raw['locomotive']['electric-locomotive-mk1'].equipment_grid = "bob-locomotive"
+		data.raw['locomotive']['et-electric-locomotive-mk1'].equipment_grid = "bob-locomotive"
 		if settings.startup['mk-train'] then
-			data.raw['locomotive']['electric-locomotive-mk2'].equipment_grid = "bob-locomotive-2"
-			data.raw['locomotive']['electric-locomotive-mk3'].equipment_grid = "bob-locomotive-3"
+			data.raw['locomotive']['et-electric-locomotive-mk2'].equipment_grid = "bob-locomotive-2"
+			data.raw['locomotive']['et-electric-locomotive-mk3'].equipment_grid = "bob-locomotive-3"
 		end
 		if settings.startup['mk-cargo'].value then
-			data.raw['cargo-wagon']['cargo-wagon-mk2'].equipment_grid = "bob-cargo-wagon-2"
-			data.raw['cargo-wagon']['cargo-wagon-mk3'].equipment_grid = "bob-cargo-wagon-3"
+			data.raw['cargo-wagon']['et-cargo-wagon-mk2'].equipment_grid = "bob-cargo-wagon-2"
+			data.raw['cargo-wagon']['et-cargo-wagon-mk3'].equipment_grid = "bob-cargo-wagon-3"
 		end
 	end
 end
