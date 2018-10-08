@@ -1,23 +1,28 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.11
+Date: 08. 10. 2018
+  Bugfixes:
+    - Fixed a mod incompatibility. https://mods.factorio.com/mod/ElectricTrain/discussion/5bb7961a84c755000987c5cd
+---------------------------------------------------------------------------------------------------
 Version: 0.16.10
 Date: 08. 10. 2018
   Bugfixes:
-    - Fix migrations issue. https://mods.factorio.com/mod/ElectricTrain/discussion/5bbb3281b4521f000a54c4f2
+    - Fixed a migrations issue. https://mods.factorio.com/mod/ElectricTrain/discussion/5bbb3281b4521f000a54c4f2
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.9
 Date: 27. 09. 2018
   Bugfixes:
-    - Try to fix the bug. (https://mods.factorio.com/mod/ElectricTrain/discussion/5b97a7ae21a58d000969be25)
+    - Try to fix the bug. https://mods.factorio.com/mod/ElectricTrain/discussion/5b97a7ae21a58d000969be25
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.8
 Date: 16. 08. 2018
   Bugfixes:
-    - The next try to fix the bug. (https://mods.factorio.com/mod/ElectricTrain/discussion/5b68a354a16c56000abd2fe7)
+    - The next try to fix the bug. https://mods.factorio.com/mod/ElectricTrain/discussion/5b68a354a16c56000abd2fe7
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.7
 Date: 07. 08. 2018
   Bugfixes:
-    - Fixed the crash when placing power provider. (https://mods.factorio.com/mod/ElectricTrain/discussion/5b68a354a16c56000abd2fe7)
+    - Fixed the crash when placing power provider. https://mods.factorio.com/mod/ElectricTrain/discussion/5b68a354a16c56000abd2fe7
   Translation:
     - Russian translation. (Pull request by MasterLogick)
 ---------------------------------------------------------------------------------------------------
@@ -35,7 +40,7 @@ Date: 02. 07. 2018
 Version: 0.16.4
 Date: 27. 03. 2018
   Bugfixes:
-    - Fixed crash when mined rails. (https://mods.factorio.com/mod/ElectricTrain/discussion/5ab8a9e11d4344000a467985)
+    - Fixed crash when mined rails. https://mods.factorio.com/mod/ElectricTrain/discussion/5ab8a9e11d4344000a467985
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.3
 Date: 05. 03. 2018
@@ -62,11 +67,11 @@ Version: 0.15.11
 ---------------------------------------------------------------------------------------------------
 Version: 0.15.10
   Bugfixes:
-    - The next try to fix my mistake. (https://mods.factorio.com/mod/ElectricTrain/discussion/5a5f1b0dadcc441024d76eb3)
+    - The next try to fix my mistake. https://mods.factorio.com/mod/ElectricTrain/discussion/5a5f1b0dadcc441024d76eb3
 ---------------------------------------------------------------------------------------------------
 Version: 0.15.9
   Bugfixes:
-    - Fixed a mistake. (https://mods.factorio.com/mod/ElectricTrain/discussion/5a5f1b0dadcc441024d76eb3)
+    - Fixed a mistake. https://mods.factorio.com/mod/ElectricTrain/discussion/5a5f1b0dadcc441024d76eb3
 ---------------------------------------------------------------------------------------------------
 Version: 0.15.8
   Minor Features:
@@ -92,7 +97,7 @@ Version: 0.15.5
 ---------------------------------------------------------------------------------------------------
 Version: 0.15.4
   Bugfixes:
-    - Fixed the issue with providers. (https://mods.factorio.com/mod/ElectricTrain/discussion/5a5f1b0dadcc441024d76678)
+    - Fixed the issue with providers. https://mods.factorio.com/mod/ElectricTrain/discussion/5a5f1b0dadcc441024d76678
 ---------------------------------------------------------------------------------------------------
 Version: 0.15.3
   Bugfixes:

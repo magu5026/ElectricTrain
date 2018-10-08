@@ -20,7 +20,7 @@ if settings.startup['mk-train'].value then
 end
 
 
-if not mods['boblogistics'] then
+if not (mods['boblogistics'] or mods['FactorioExtended-Trains']) then
 	if settings.startup['mk-cargo'].value then
 		cargo_tech()
 		cargo_rec()
@@ -30,12 +30,12 @@ if not mods['boblogistics'] then
 		fluid_rec()
 	end
 	if settings.startup['mk-train'].value then
-		data.raw['artillery-wagon']['artillery-wagon'].max_speed = 3.5
+		data.raw['artillery-wagon']['artillery-wagon'].max_speed = 3
 		if not settings.startup['mk-cargo'].value then
-			data.raw['cargo-wagon']['cargo-wagon'].max_speed = 3.5
+			data.raw['cargo-wagon']['cargo-wagon'].max_speed = 3
 		end
 		if not settings.startup['mk-fluid'].value then
-			data.raw['fluid-wagon']['fluid-wagon'].max_speed = 3.5
+			data.raw['fluid-wagon']['fluid-wagon'].max_speed = 3
 		end
 	end	
 end
@@ -44,9 +44,16 @@ end
 if mods['Vehicle Wagon'] and settings.startup['mk-train'].value then
 	for _,wagon in pairs(data.raw['cargo-wagon']) do
 		if wagon.name:find("vehicle-wagon",1,true) then	
-			wagon.max_speed = 3.5
+			wagon.max_speed = 3
 		end
 	end
+end
+
+if mods['FactorioExtended-Trains'] and settings.startup['mk-train'].value then
+	data.raw['cargo-wagon']['cargo-wagon-mk2'].max_speed = 2.25
+	data.raw['cargo-wagon']['cargo-wagon-mk3'].max_speed = 3
+	data.raw['fluid-wagon']['fluid-wagon-mk2'].max_speed = 2.25
+	data.raw['fluid-wagon']['fluid-wagon-mk3'].max_speed = 3	
 end
 
 
