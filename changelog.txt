@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.12
+Date: 26. 10. 2018
+  Bugfixes:
+    - Next attempt to fix the error. https://mods.factorio.com/mod/ElectricTrain/discussion/5b97a7ae21a58d000969be25
+---------------------------------------------------------------------------------------------------
 Version: 0.16.11
 Date: 08. 10. 2018
   Bugfixes:
@@ -12,12 +17,12 @@ Date: 08. 10. 2018
 Version: 0.16.9
 Date: 27. 09. 2018
   Bugfixes:
-    - Try to fix the bug. https://mods.factorio.com/mod/ElectricTrain/discussion/5b97a7ae21a58d000969be25
+    - Attempt to fix the error. https://mods.factorio.com/mod/ElectricTrain/discussion/5b97a7ae21a58d000969be25
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.8
 Date: 16. 08. 2018
   Bugfixes:
-    - The next try to fix the bug. https://mods.factorio.com/mod/ElectricTrain/discussion/5b68a354a16c56000abd2fe7
+    - Next attempt to fix the error. https://mods.factorio.com/mod/ElectricTrain/discussion/5b68a354a16c56000abd2fe7
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.7
 Date: 07. 08. 2018
@@ -67,7 +72,7 @@ Version: 0.15.11
 ---------------------------------------------------------------------------------------------------
 Version: 0.15.10
   Bugfixes:
-    - The next try to fix my mistake. https://mods.factorio.com/mod/ElectricTrain/discussion/5a5f1b0dadcc441024d76eb3
+    - Next attempt to fix my mistake. https://mods.factorio.com/mod/ElectricTrain/discussion/5a5f1b0dadcc441024d76eb3
 ---------------------------------------------------------------------------------------------------
 Version: 0.15.9
   Bugfixes:
