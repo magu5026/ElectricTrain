@@ -27,7 +27,7 @@ function OnConfigurationChanged(data)
 			local trains = surface.find_entities_filtered{type="locomotive"}
 			for _,train in pairs(trains) do
 				if train.name:find("et-electric-locomotive-mk",1,true) then
-					table.insert(global.TrainList,{entity = train, last_fuel = {}})
+					table.insert(global.TrainList,{entity = train, last_fuel = nil, last_fuel_value = 0, stored_energy = 0})
 					train.burner.currently_burning = global.Fuel
 					train.burner.remaining_burning_fuel = global.Fuel.fuel_value
 				end

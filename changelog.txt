@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.13
+Date: 15. 03. 2019
+  Changes:
+    - Resolving the problem that one power provider can keep any number of trains operating at full capacity.
+    - Resolving the problem that provider energy can drop below zero.
+    - Resolving the problem that remaining burner fuel can increase above maximum fuel energy.
+    - Both electric power and energy from burning fuel are conserved when switching power sources.
+---------------------------------------------------------------------------------------------------
 Version: 0.16.12
 Date: 26. 10. 2018
   Bugfixes:
