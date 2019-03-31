@@ -76,6 +76,7 @@ function OnBuilt(event)
 end
 script.on_event({defines.events.on_built_entity,defines.events.on_robot_built_entity,defines.events.script_raised_built},OnBuilt)
 
+local is_fuel_removed = false
 
 function OnTick()
 	if anz_provider > 0 and anz_train > 0 then
@@ -96,12 +97,17 @@ function OnTick()
 		if provider_power > 0 then 
 			for i,train in pairs(global.TrainList) do
 				if train and train.valid then
+					if is_fuel_removed then
+						train.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
+						train.burner.remaining_burning_fuel = train.burner.currently_burning.fuel_value
+					end
 					need_power = need_power + train.burner.currently_burning.fuel_value - train.burner.remaining_burning_fuel		
 				else
 					table.remove(global.TrainList,i)
 					anz_train = anz_train - 1
 				end
 			end
+			is_fuel_removed = false
 		
 			rest_power = provider_power - need_power
 			if rest_power >= 0 then
@@ -122,6 +128,21 @@ function OnTick()
 				end
 			end
 		end
+	else
+		if anz_train > 0 and anz_provider == 0 and not is_fuel_removed then
+			RemoveTrainFuel()
+		end
 	end
 end
 script.on_event(defines.events.on_tick,OnTick)
+
+function RemoveTrainFuel()
+	for i,train in pairs(global.TrainList) do
+		if train and train.valid then
+			train.burner.currently_burning = nil
+		else
+			global.TrainList[i] = nil
+		end
+	end
+	is_fuel_removed = true
+end

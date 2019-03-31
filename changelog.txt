@@ -1,8 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.7
+Date: 27. 03. 2019
+  Changes:
+    - Fixed a mistake.
+---------------------------------------------------------------------------------------------------
 Version: 0.17.6
 Date: 27. 03. 2019
   Changes:
-    - change code for compatibility with Automatic Train Fuel Stop
+    - Change code for compatibility with Automatic Train Fuel Stop
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.5
 Date: 21. 03. 2019
