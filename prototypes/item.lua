@@ -1,67 +1,82 @@
-local eloc = table.deepcopy(data.raw['item-with-entity-data']['locomotive'])
-eloc.name = "et-electric-locomotive-mk1"
-eloc.subgroup = "electric-transport-log"
-eloc.order = "b"
-eloc.place_result = "et-electric-locomotive-mk1"
+local electric_locomotive_1 = table.deepcopy(data.raw['item-with-entity-data']['locomotive'])
+electric_locomotive_1.name = "et-electric-locomotive-1"
+electric_locomotive_1.subgroup = "electric-transport-log"
+electric_locomotive_1.order = "b"
+electric_locomotive_1.place_result = "et-electric-locomotive-1"
 
-local eloc2 = table.deepcopy(data.raw['item-with-entity-data']['locomotive'])
-eloc2.name = "et-electric-locomotive-mk2"
-eloc2.subgroup = "electric-transport-log"
-eloc2.order = "c"
-eloc2.place_result = "et-electric-locomotive-mk2"
+local electric_locomotive_2 = table.deepcopy(data.raw['item-with-entity-data']['locomotive'])
+electric_locomotive_2.name = "et-electric-locomotive-2"
+electric_locomotive_2.subgroup = "electric-transport-log"
+electric_locomotive_2.order = "c"
+electric_locomotive_2.place_result = "et-electric-locomotive-2"
 
-local eloc3 = table.deepcopy(data.raw['item-with-entity-data']['locomotive'])
-eloc3.name = "et-electric-locomotive-mk3"
-eloc3.subgroup = "electric-transport-log"
-eloc3.order = "d"
-eloc3.place_result = "et-electric-locomotive-mk3"
+local electric_locomotive_3 = table.deepcopy(data.raw['item-with-entity-data']['locomotive'])
+electric_locomotive_3.name = "et-electric-locomotive-3"
+electric_locomotive_3.subgroup = "electric-transport-log"
+electric_locomotive_3.order = "d"
+electric_locomotive_3.place_result = "et-electric-locomotive-3"
 
-data:extend({eloc,eloc2,eloc3})
-
-
-local cwag2 = table.deepcopy(data.raw['item-with-entity-data']['cargo-wagon'])
-cwag2.name = "et-cargo-wagon-mk2"
-cwag2.subgroup = "electric-transport-cargo"
-cwag2.order = "b"
-cwag2.place_result = "et-cargo-wagon-mk2"
-
-local cwag3 = table.deepcopy(data.raw['item-with-entity-data']['cargo-wagon'])
-cwag3.name = "et-cargo-wagon-mk3"
-cwag3.subgroup = "electric-transport-cargo"
-cwag3.order = "c"
-cwag3.place_result = "et-cargo-wagon-mk3"
-
-data:extend({cwag2,cwag3})	
+data:extend({electric_locomotive_1,electric_locomotive_2,electric_locomotive_3})
 
 
-local fwag2 = table.deepcopy(data.raw['item-with-entity-data']['fluid-wagon'])
-fwag2.name = "et-fluid-wagon-mk2"
-fwag2.subgroup = "electric-transport-fluid"
-fwag2.order = "b"
-fwag2.place_result = "et-fluid-wagon-mk2"
+local cargo_wagon_2 = table.deepcopy(data.raw['item-with-entity-data']['cargo-wagon'])
+cargo_wagon_2.name = "et-cargo-wagon-2"
+cargo_wagon_2.subgroup = "electric-transport-cargo"
+cargo_wagon_2.order = "b"
+cargo_wagon_2.place_result = "et-cargo-wagon-2"
 
-local fwag3 = table.deepcopy(data.raw['item-with-entity-data']['fluid-wagon'])
-fwag3.name = "et-fluid-wagon-mk3"
-fwag3.subgroup = "electric-transport-fluid"
-fwag3.order = "c"
-fwag3.place_result = "et-fluid-wagon-mk3"
+local cargo_wagon_3 = table.deepcopy(data.raw['item-with-entity-data']['cargo-wagon'])
+cargo_wagon_3.name = "et-cargo-wagon-3"
+cargo_wagon_3.subgroup = "electric-transport-cargo"
+cargo_wagon_3.order = "c"
+cargo_wagon_3.place_result = "et-cargo-wagon-3"
 
-data:extend({fwag2,fwag3})
-
-
-local ppro = table.deepcopy(data.raw['item']['accumulator'])
-ppro.name = "et-electricity-provider"
-ppro.icon = "__ElectricTrain__/graphics/power-provider-icon.png"
-ppro.subgroup = "electric-transport-log"
-ppro.order = "e"
-ppro.place_result = "et-electricity-provider"
-
-data:extend({ppro})
+data:extend({cargo_wagon_2,cargo_wagon_3})	
 
 
-local fuel = table.deepcopy(data.raw['item']['wood'])
-fuel.name = "et-electric-locomotive-fuel"
-fuel.flags = {"hidden"}
-fuel.fuel_value = "10GJ"
+local fluid_wagon_2 = table.deepcopy(data.raw['item-with-entity-data']['fluid-wagon'])
+fluid_wagon_2.name = "et-fluid-wagon-2"
+fluid_wagon_2.subgroup = "electric-transport-fluid"
+fluid_wagon_2.order = "b"
+fluid_wagon_2.place_result = "et-fluid-wagon-2"
+
+local fluid_wagon_3 = table.deepcopy(data.raw['item-with-entity-data']['fluid-wagon'])
+fluid_wagon_3.name = "et-fluid-wagon-3"
+fluid_wagon_3.subgroup = "electric-transport-fluid"
+fluid_wagon_3.order = "c"
+fluid_wagon_3.place_result = "et-fluid-wagon-3"
+
+data:extend({fluid_wagon_2,fluid_wagon_3})
+
+
+local electricity_provider = table.deepcopy(data.raw['item']['accumulator'])
+electricity_provider.name = "et-electricity-provider"
+electricity_provider.icon = "__ElectricTrain__/graphics/power-provider-icon.png"
+electricity_provider.subgroup = "electric-transport-log"
+electricity_provider.order = "e"
+electricity_provider.place_result = "et-electricity-provider"
+
+data:extend({electricity_provider})
+
+
+data:extend(
+{
+	{
+		type = "item",
+		name = "et-electric-locomotive-fuel",
+		icon = "__base__/graphics/icons/wood.png",
+		icon_size = 32,
+		flags = { "hidden" },
+		fuel_value = "2GJ",
+		fuel_category = "chemical",
+		stack_size = 1
+	}
+})
+
+
+--local fuel = table.deepcopy(data.raw['item']['wood'])
+--fuel.name = "et-electric-locomotive-fuel"
+--fuel.flags = {"hidden"}
+--fuel.fuel_value = "10GJ"
 	
-data:extend({fuel})
+--data:extend({fuel})

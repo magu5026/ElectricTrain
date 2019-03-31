@@ -6,10 +6,16 @@ function OnBuilt(event)
 	if entity and entity.valid then
 		if entity.name == "et-electricity-provider" and entity.type == "electric-energy-interface" then
 			table.insert(global.ProviderList,entity)
-		elseif entity.name:find("et-electric-locomotive-mk",1,true) and entity.type == "locomotive" then 
+		elseif entity.name:match("^et%-electric%-locomotive%-%d$") and entity.type == "locomotive" then 
 			table.insert(global.TrainList,{entity = entity, last_fuel = {}})
+			
+			if not (global.Fuel and global.Fuel.valid and global.Fuel.fuel_value) then
+				global.Fuel = game.item_prototypes["et-electric-locomotive-fuel"]
+				global.Fuel.fuel_value = global.Fuel.fuel_value or "2GJ"
+			end
+			
 			entity.burner.currently_burning = global.Fuel
-			entity.burner.remaining_burning_fuel = global.Fuel.fuel_value
+			entity.burner.remaining_burning_fuel = global.Fuel.fuel_value or global.FailOverFuelValue
 		end
 	end
 end
@@ -25,7 +31,7 @@ function OnRemove(event)
 					break
 				end
 			end
-		elseif entity.name:find("et-electric-locomotive-mk",1,true) and entity.type == "locomotive" then 
+		elseif entity.name:match("^et%-electric%-locomotive%-%d$") and entity.type == "locomotive" then 
 			for i,train in pairs(global.TrainList) do
 				if entity == train.entity then
 					table.remove(global.TrainList,i)
@@ -53,6 +59,11 @@ end
 	
 	
 function OnTick()
+	if not (global.Fuel and global.Fuel.valid and global.Fuel.fuel_value) then
+		global.Fuel = game.item_prototypes["et-electric-locomotive-fuel"]
+		global.Fuel.fuel_value = global.Fuel.fuel_value or "2GJ"
+	end
+
 	if #global.TrainList > 0 and #global.ProviderList > 0 then
 		local need_power = 0
 		local provider_power = 0
@@ -75,9 +86,9 @@ function OnTick()
 						train.last_fuel['fuel_value'] = train.entity.burner.remaining_burning_fuel
 				
 						train.entity.burner.currently_burning = global.Fuel
-						train.entity.burner.remaining_burning_fuel = global.Fuel.fuel_value
+						train.entity.burner.remaining_burning_fuel = global.Fuel.fuel_value or global.FailOverFuelValue
 					end
-					need_power = need_power + global.Fuel.fuel_value - train.entity.burner.remaining_burning_fuel				
+					need_power = need_power + (global.Fuel.fuel_value or global.FailOverFuelValue) - train.entity.burner.remaining_burning_fuel				
 				else
 					table.remove(global.TrainList,i)
 				end

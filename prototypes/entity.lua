@@ -1,96 +1,107 @@
-local e_loc = table.deepcopy(data.raw['locomotive']['locomotive'])
-e_loc.name = "et-electric-locomotive-mk1"
-e_loc.minable.result = "et-electric-locomotive-mk1"
-e_loc.burner =	{effectivity = 1, fuel_inventory_size = 1}
+data:extend({
+util.merge{data.raw.locomotive.locomotive,
+		{
+			name = "et-electric-locomotive-1",
+			minable = {mining_time = 0.5, result = "et-electric-locomotive-1"},
+			burner = {fuel_inventory_size = 1}
+		}
+	}
+})
+
+local electric_locomotive_1 = table.deepcopy(data.raw['locomotive']['locomotive'])
+electric_locomotive_1.name = "et-electric-locomotive-1"
+electric_locomotive_1.minable.result = "et-electric-locomotive-1"
+electric_locomotive_1.burner =	{effectivity = 1, fuel_inventory_size = 1}
 
 				
-local e_loc2 = table.deepcopy(data.raw['locomotive']['locomotive'])
-e_loc2.name = "et-electric-locomotive-mk2"
-e_loc2.minable.result = "et-electric-locomotive-mk2"
-e_loc2.max_health = 1350
-e_loc2.max_speed = 1.8		--216*1.8 = 388.8
-e_loc2.max_power = "900kW"
-e_loc2.reversing_power_modifier = 0.8
-e_loc2.braking_force = 15
-e_loc2.friction_force = 0.375
-e_loc2.air_resistance = 0.005625
-e_loc2.burner =	{effectivity = 1, fuel_inventory_size = 2}				
+local electric_locomotive_2 = table.deepcopy(data.raw['locomotive']['locomotive'])
+electric_locomotive_2.name = "et-electric-locomotive-2"
+electric_locomotive_2.minable.result = "et-electric-locomotive-2"
+electric_locomotive_2.max_health = 1350
+electric_locomotive_2.max_speed = 1.8		--216*1.8 = 388.8
+electric_locomotive_2.max_power = "900kW"
+electric_locomotive_2.reversing_power_modifier = 0.8
+electric_locomotive_2.braking_force = 15
+electric_locomotive_2.friction_force = 0.375
+electric_locomotive_2.air_resistance = 0.005625
+electric_locomotive_2.burner =	{effectivity = 1, fuel_inventory_size = 2}				
 				
 				
-local e_loc3 = table.deepcopy(data.raw['locomotive']['locomotive'])
-e_loc3.name = "et-electric-locomotive-mk3"
-e_loc3.minable.result = "et-electric-locomotive-mk3"
-e_loc3.max_health = 1700
-e_loc3.max_speed = 2.4		--216*2.4 = 518.4
-e_loc3.max_power = "1200kW"
-e_loc3.reversing_power_modifier = 1
-e_loc3.braking_force = 20
-e_loc3.friction_force = 0.25
-e_loc3.air_resistance = 0.00375
-e_loc3.burner =	{effectivity = 1, fuel_inventory_size = 3}
+local electric_locomotive_3 = table.deepcopy(data.raw['locomotive']['locomotive'])
+electric_locomotive_3.name = "et-electric-locomotive-3"
+electric_locomotive_3.minable.result = "et-electric-locomotive-3"
+electric_locomotive_3.max_health = 1700
+electric_locomotive_3.max_speed = 2.4		--216*2.4 = 518.4
+electric_locomotive_3.max_power = "1200kW"
+electric_locomotive_3.reversing_power_modifier = 1
+electric_locomotive_3.braking_force = 20
+electric_locomotive_3.friction_force = 0.25
+electric_locomotive_3.air_resistance = 0.00375
+electric_locomotive_3.burner =	{effectivity = 1, fuel_inventory_size = 3}
 	
 
-data:extend({e_loc,e_loc2,e_loc3})
+--data:extend({electric_locomotive_1,electric_locomotive_2,electric_locomotive_3})
+data:extend({electric_locomotive_2,electric_locomotive_3})
 	
 				
-local cargo2 = table.deepcopy(data.raw['cargo-wagon']['cargo-wagon'])				
-cargo2.name = "et-cargo-wagon-mk2"
-cargo2.inventory_size = 60				
-cargo2.minable.result = "et-cargo-wagon-mk2"			
-cargo2.max_health = 800
-cargo2.weight = 1500
-cargo2.max_speed = 2.25
-cargo2.braking_force = 4
-cargo2.friction_force = 0.375
-cargo2.air_resistance = 0.003
+local cargo_wagon_2 = table.deepcopy(data.raw['cargo-wagon']['cargo-wagon'])				
+cargo_wagon_2.name = "et-cargo-wagon-2"
+cargo_wagon_2.inventory_size = 60				
+cargo_wagon_2.minable.result = "et-cargo-wagon-2"			
+cargo_wagon_2.max_health = 800
+cargo_wagon_2.weight = 1500
+cargo_wagon_2.max_speed = 2.25
+cargo_wagon_2.braking_force = 4
+cargo_wagon_2.friction_force = 0.375
+cargo_wagon_2.air_resistance = 0.003
 
 
-local cargo3 = table.deepcopy(data.raw['cargo-wagon']['cargo-wagon'])				
-cargo3.name = "et-cargo-wagon-mk3"
-cargo3.inventory_size = 80
-cargo3.minable.result = "et-cargo-wagon-mk3"			
-cargo3.max_health = 1000
-cargo3.weight = 2000
-cargo3.max_speed = 3
-cargo3.braking_force = 5
-cargo3.friction_force = 0.25
-cargo3.air_resistance = 0.002
+local cargo_wagon_3 = table.deepcopy(data.raw['cargo-wagon']['cargo-wagon'])				
+cargo_wagon_3.name = "et-cargo-wagon-3"
+cargo_wagon_3.inventory_size = 80
+cargo_wagon_3.minable.result = "et-cargo-wagon-3"			
+cargo_wagon_3.max_health = 1000
+cargo_wagon_3.weight = 2000
+cargo_wagon_3.max_speed = 3
+cargo_wagon_3.braking_force = 5
+cargo_wagon_3.friction_force = 0.25
+cargo_wagon_3.air_resistance = 0.002
 
 
-local fluid2 = table.deepcopy(data.raw['fluid-wagon']['fluid-wagon'])				
-fluid2.name = "et-fluid-wagon-mk2"
-fluid2.capacity = 25000 * 1.5
-fluid2.minable.result = "et-fluid-wagon-mk2"
-fluid2.max_health = 800
-fluid2.weight = 1500
-fluid2.max_speed = 2.25
-fluid2.braking_force = 4
-fluid2.friction_force = 0.375
-fluid2.air_resistance = 0.003
+local fluid_wagon_2 = table.deepcopy(data.raw['fluid-wagon']['fluid-wagon'])				
+fluid_wagon_2.name = "et-fluid-wagon-2"
+fluid_wagon_2.capacity = 25000 * 1.5
+fluid_wagon_2.minable.result = "et-fluid-wagon-2"
+fluid_wagon_2.max_health = 800
+fluid_wagon_2.weight = 1500
+fluid_wagon_2.max_speed = 2.25
+fluid_wagon_2.braking_force = 4
+fluid_wagon_2.friction_force = 0.375
+fluid_wagon_2.air_resistance = 0.003
 
 
-local fluid3 = table.deepcopy(data.raw['fluid-wagon']['fluid-wagon'])				
-fluid3.name = "et-fluid-wagon-mk3"
-fluid3.capacity = 25000 * 2
-fluid3.minable.result = "et-fluid-wagon-mk3"
-fluid3.max_health = 1000
-fluid3.weight = 2000
-fluid3.max_speed = 3
-fluid3.braking_force = 5
-fluid3.friction_force = 0.25
-fluid3.air_resistance = 0.003
+local fluid_wagon_3 = table.deepcopy(data.raw['fluid-wagon']['fluid-wagon'])				
+fluid_wagon_3.name = "et-fluid-wagon-3"
+fluid_wagon_3.capacity = 25000 * 2
+fluid_wagon_3.minable.result = "et-fluid-wagon-3"
+fluid_wagon_3.max_health = 1000
+fluid_wagon_3.weight = 2000
+fluid_wagon_3.max_speed = 3
+fluid_wagon_3.braking_force = 5
+fluid_wagon_3.friction_force = 0.25
+fluid_wagon_3.air_resistance = 0.003
 
 
-data:extend({cargo2,cargo3,fluid2,fluid3})
+data:extend({cargo_wagon_2,cargo_wagon_3,fluid_wagon_2,fluid_wagon_3})
 
 
-local provider = table.deepcopy(data.raw['electric-energy-interface']['electric-energy-interface'])	
-provider.name = "et-electricity-provider"
-provider.icon = "__ElectricTrain__/graphics/power-provider-icon.png"
-provider.minable.result = "et-electricity-provider"
-provider.gui_mode = nil
-provider.allow_copy_paste = false
-provider.energy_source =
+local electricity_provider = table.deepcopy(data.raw['electric-energy-interface']['electric-energy-interface'])	
+electricity_provider.name = "et-electricity-provider"
+electricity_provider.icon = "__ElectricTrain__/graphics/power-provider-icon.png"
+electricity_provider.minable.result = "et-electricity-provider"
+electricity_provider.gui_mode = nil
+electricity_provider.allow_copy_paste = false
+electricity_provider.energy_source =
 						{
 							type = "electric",
 							buffer_capacity = "2000KJ",
@@ -98,10 +109,10 @@ provider.energy_source =
 							input_flow_limit = "2100KW",
 							output_flow_limit = "0W"
 						}
-provider.energy_production = "0W"
-provider.energy_usage = "100KW"
-provider.drain = "200KW"
-provider.picture =
+electricity_provider.energy_production = "0W"
+electricity_provider.energy_usage = "100KW"
+electricity_provider.drain = "200KW"
+electricity_provider.picture =
 					{
 						filename = "__ElectricTrain__/graphics/power-provider.png",
 						priority = "extra-high",
@@ -111,4 +122,4 @@ provider.picture =
 					}
 
 
-data:extend({provider})
+data:extend({electricity_provider})

@@ -1,0 +1,41 @@
+{
+  "entity":
+  [
+	["et-electric-locomotive-mk1", "et-electric-locomotive-1"],
+	["et-electric-locomotive-mk2", "et-electric-locomotive-2"],
+	["et-electric-locomotive-mk3", "et-electric-locomotive-3"],
+	["et-cargo-wagon-mk2", "et-cargo-wagon-2"],
+	["et-cargo-wagon-mk3", "et-cargo-wagon-3"],
+	["et-fluid-wagon-mk2", "et-fluid-wagon-2"],
+	["et-fluid-wagon-mk3", "et-fluid-wagon-3"]
+  ],
+  "item":
+  [
+	["et-electric-locomotive-mk1", "et-electric-locomotive-1"],
+	["et-electric-locomotive-mk2", "et-electric-locomotive-2"],
+	["et-electric-locomotive-mk3", "et-electric-locomotive-3"],
+	["et-cargo-wagon-mk2", "et-cargo-wagon-2"],
+	["et-cargo-wagon-mk3", "et-cargo-wagon-3"],
+	["et-fluid-wagon-mk2", "et-fluid-wagon-2"],
+	["et-fluid-wagon-mk3", "et-fluid-wagon-3"]
+  ],
+  "recipe":
+  [
+	["et-electric-locomotive-mk1", "et-electric-locomotive-1"],
+	["et-electric-locomotive-mk2", "et-electric-locomotive-2"],
+	["et-electric-locomotive-mk3", "et-electric-locomotive-3"],
+	["et-cargo-wagon-mk2", "et-cargo-wagon-2"],
+	["et-cargo-wagon-mk3", "et-cargo-wagon-3"],
+	["et-fluid-wagon-mk2", "et-fluid-wagon-2"],
+	["et-fluid-wagon-mk3", "et-fluid-wagon-3"]
+  ],
+  "technology":
+  [
+	["et-electric-locomotive-mk2", "et-electric-locomotive-2"],
+	["et-electric-locomotive-mk3", "et-electric-locomotive-3"],
+	["et-cargo-wagon-mk2", "et-cargo-wagon-2"],
+	["et-cargo-wagon-mk3", "et-cargo-wagon-3"],
+	["et-fluid-wagon-mk2", "et-fluid-wagon-2"],
+	["et-fluid-wagon-mk3", "et-fluid-wagon-3"]
+  ]
+}
