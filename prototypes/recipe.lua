@@ -4,7 +4,7 @@ eloc.ingredients =
 	{
 		{"locomotive", 1},
 		{"battery", 10},
-		{"electric-engine-unit", 20}	
+		{"electric-engine-unit", 10}	
 	}
 eloc.result = "et-electric-locomotive-mk1"
 
@@ -13,7 +13,8 @@ eloc2.name = "et-electric-locomotive-mk2"
 eloc2.ingredients =
 	{
 		{"et-electric-locomotive-mk1", 1},
-		{"battery", 5},
+		{"battery", 10},
+		{"low-density-structure", 10},
 		{"electric-engine-unit", 10},
 		{"advanced-circuit", 10}
 	}
@@ -25,6 +26,8 @@ eloc3.ingredients =
 	{
 		{"et-electric-locomotive-mk2", 1},
 		{"battery", 10},
+		{"low-density-structure", 10},
+		{"electric-engine-unit", 10},
 		{"processing-unit", 10}	
 	}
 eloc3.result = "et-electric-locomotive-mk3"
@@ -35,7 +38,8 @@ cwag2.ingredients =
 	{
 		{"cargo-wagon", 1},
 		{"iron-gear-wheel", 20},
-		{"steel-plate", 20}	
+		{"steel-plate", 20},
+		{"low-density-structure", 10}		
 	}
 cwag2.result = "et-cargo-wagon-mk2"
 
@@ -45,7 +49,8 @@ cwag3.ingredients =
 	{
 		{"et-cargo-wagon-mk2", 1},
 		{"iron-gear-wheel", 20},
-		{"steel-plate", 20}	
+		{"steel-plate", 20},
+		{"low-density-structure", 10}		
 	}
 cwag3.result = "et-cargo-wagon-mk3"
 
@@ -57,7 +62,8 @@ fwag2.ingredients =
 		{"iron-gear-wheel", 10},
 		{"steel-plate", 16},
 		{"pipe", 8},
-		{"storage-tank", 1}	
+		{"storage-tank", 1},
+		{"low-density-structure", 10}		
 	}
 fwag2.result = "et-fluid-wagon-mk2"
 
@@ -69,7 +75,8 @@ fwag3.ingredients =
 		{"iron-gear-wheel", 10},
 		{"steel-plate", 16},
 		{"pipe", 8},
-		{"storage-tank", 1}	
+		{"storage-tank", 1},
+		{"low-density-structure", 10}		
 	}
 fwag3.result = "et-fluid-wagon-mk3"
 

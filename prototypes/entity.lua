@@ -88,7 +88,7 @@ local provider = table.deepcopy(data.raw['electric-energy-interface']['electric-
 provider.name = "et-electricity-provider"
 provider.icon = "__ElectricTrain__/graphics/power-provider-icon.png"
 provider.minable.result = "et-electricity-provider"
-provider.enable_gui = false
+provider.gui_mode = nil
 provider.allow_copy_paste = false
 provider.energy_source =
 						{

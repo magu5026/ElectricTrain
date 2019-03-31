@@ -59,7 +59,7 @@ ppro.place_result = "et-electricity-provider"
 data:extend({ppro})
 
 
-local fuel = table.deepcopy(data.raw['item']['raw-wood'])
+local fuel = table.deepcopy(data.raw['item']['wood'])
 fuel.name = "et-electric-locomotive-fuel"
 fuel.flags = {"hidden"}
 fuel.fuel_value = "10GJ"

@@ -15,15 +15,14 @@ data:extend
 			recipe = "et-electricity-provider"
 		}			
 	},
-	prerequisites = {"railway", "electric-engine", "electric-energy-accumulators-1" },
+	prerequisites = {"railway", "electric-engine", "electric-energy-accumulators-1", "advanced-electronics"},
 	unit =
 	{
-		count = 50,
+		count = 300,
 		ingredients =
 		{
-			{"science-pack-1", 2},
-			{"science-pack-2", 2},
-			{"science-pack-3", 1},
+			{"automation-science-pack", 1},
+			{"logistic-science-pack", 1}
 		},
 		time = 20
 	},
@@ -36,7 +35,7 @@ function train_tech()
 		{
 			{
 				type = "technology",
-				name = "et-electric-locomotive-mk2",
+				name = "et-electric-locomotive-2",
 				icon = "__ElectricTrain__/graphics/tech_mk2.png",
 				icon_size = 128,
 				effects =
@@ -46,15 +45,15 @@ function train_tech()
 						recipe = "et-electric-locomotive-mk2"
 					}			
 				},
-				prerequisites = {"et-electric-railway"},
+				prerequisites = {"et-electric-railway", "low-density-structure"},
 				unit =
 				{
-					count = 100,
+					count = 200,
 					ingredients =
 					{
-						{"science-pack-1", 2},
-						{"science-pack-2", 2},
-						{"science-pack-3", 1},
+						{"automation-science-pack", 2},
+						{"logistic-science-pack", 2},
+						{"chemical-science-pack", 1},
 					},
 					time = 20
 				},
@@ -62,7 +61,7 @@ function train_tech()
 			},
 			{
 				type = "technology",
-				name = "et-electric-locomotive-mk3",
+				name = "et-electric-locomotive-3",
 				icon = "__ElectricTrain__/graphics/tech_mk3.png",
 				icon_size = 128,
 				effects =
@@ -72,15 +71,16 @@ function train_tech()
 						recipe = "et-electric-locomotive-mk3"
 					}
 				},
-				prerequisites = {"et-electric-locomotive-mk2", "advanced-electronics-2"},
+				prerequisites = {"et-electric-locomotive-2", "utility-science-pack"},
 				unit =
 				{
-					count = 150,
+					count = 200,
 					ingredients =
 					{
-						{"science-pack-1", 2},
-						{"science-pack-2", 2},
-						{"science-pack-3", 1},
+						{"automation-science-pack", 3},
+						{"logistic-science-pack", 3},
+						{"chemical-science-pack", 1},
+						{"utility-science-pack", 1}
 					},
 					time = 20
 				},
@@ -95,7 +95,7 @@ function cargo_tech()
 		{
 			{			
 				type = "technology",
-				name = "et-cargo-wagon-mk2",
+				name = "et-cargo-wagon-2",
 				icon = "__ElectricTrain__/graphics/railway_mk2.png",
 				icon_size = 128,
 				effects =
@@ -105,14 +105,15 @@ function cargo_tech()
 						recipe = "et-cargo-wagon-mk2"
 					}
 				},
-				prerequisites = {"railway"},
+				prerequisites = {"railway", "low-density-structure"},
 				unit =
 				{
-					count = 100,
+					count = 50,
 					ingredients =
 					{
-						{"science-pack-1", 2},
-						{"science-pack-2", 1}				
+						{"automation-science-pack", 3},
+						{"logistic-science-pack", 2},
+						{"chemical-science-pack", 1}						
 					},
 					time = 20
 				},
@@ -120,7 +121,7 @@ function cargo_tech()
 			},
 			{
 				type = "technology",
-				name = "et-cargo-wagon-mk3",
+				name = "et-cargo-wagon-3",
 				icon = "__ElectricTrain__/graphics/railway_mk3.png",
 				icon_size = 128,
 				effects =
@@ -130,15 +131,16 @@ function cargo_tech()
 						recipe = "et-cargo-wagon-mk3"
 					}
 				},
-				prerequisites = {"et-cargo-wagon-mk2"},
+				prerequisites = {"et-cargo-wagon-2", "utility-science-pack"},
 				unit =
 				{
 					count = 100,
 					ingredients =
 					{
-						{"science-pack-1", 2},
-						{"science-pack-2", 1},
-						{"science-pack-3", 1},
+						{"automation-science-pack", 4},
+						{"logistic-science-pack", 3},
+						{"chemical-science-pack", 2},
+						{"utility-science-pack", 1}
 					},
 					time = 20
 				},
@@ -154,7 +156,7 @@ function fluid_tech()
 		{
 			{			
 				type = "technology",
-				name = "et-fluid-wagon-mk2",
+				name = "et-fluid-wagon-2",
 				icon = "__ElectricTrain__/graphics/fluid_mk2.png",
 				icon_size = 128,
 				effects =
@@ -164,14 +166,15 @@ function fluid_tech()
 						recipe = "et-fluid-wagon-mk2"
 					}
 				},
-				prerequisites = {"fluid-wagon"},
+				prerequisites = {"fluid-wagon", "low-density-structure"},
 				unit =
 				{
-					count = 100,
+					count = 50,
 					ingredients =
 					{
-						{"science-pack-1", 2},
-						{"science-pack-2", 1}				
+						{"automation-science-pack", 3},
+						{"logistic-science-pack", 2},
+						{"chemical-science-pack", 1}
 					},
 					time = 20
 				},
@@ -179,7 +182,7 @@ function fluid_tech()
 			},
 			{
 				type = "technology",
-				name = "et-fluid-wagon-mk3",
+				name = "et-fluid-wagon-3",
 				icon = "__ElectricTrain__/graphics/fluid_mk3.png",
 				icon_size = 128,
 				effects =
@@ -189,15 +192,16 @@ function fluid_tech()
 						recipe = "et-fluid-wagon-mk3"
 					}
 				},
-				prerequisites = {"et-fluid-wagon-mk2"},
+				prerequisites = {"et-fluid-wagon-2", "utility-science-pack"},
 				unit =
 				{
 					count = 100,
 					ingredients =
 					{
-						{"science-pack-1", 2},
-						{"science-pack-2", 1},
-						{"science-pack-3", 1},
+						{"automation-science-pack", 4},
+						{"logistic-science-pack", 3},
+						{"chemical-science-pack", 2},
+						{"utility-science-pack", 1}
 					},
 					time = 20
 				},
