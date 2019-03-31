@@ -39,7 +39,7 @@ function ON_CONFIGURATION_CHANGED(data)
 			for _,surface in pairs(game.surfaces) do
 				local trains = surface.find_entities_filtered{type="locomotive"}
 				for _,train in pairs(trains) do
-					if train.name:match("^et%-electric%-locomotive%-%d$") or entity.name:match("^et%-electric%-locomotive%-%d%-mu$") then
+					if train.name:match("^et%-electric%-locomotive%-%d$") or train.name:match("^et%-electric%-locomotive%-%d%-mu$") then
 						table.insert(global.TrainList,train)
 						train.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
 						train.burner.remaining_burning_fuel = train.burner.currently_burning.fuel_value
