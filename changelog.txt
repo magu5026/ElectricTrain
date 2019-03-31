@@ -1,96 +1,91 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.9
-Date: 2019-03-29
-  Changes:
-    - Update for factorio 0.17.23. Renamed "electric-energy-accumulators-1" to "electric-energy-accumulators"
----------------------------------------------------------------------------------------------------
 Version: 0.17.8
-Date: 2019-03-28
+Date: 28. 03. 2019
   Bugfixes:
     - Attempt to fix the error. https://mods.factorio.com/mod/ElectricTrain/discussion/5c9cd4b1e95caf000b9fc903
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.7
-Date: 2019-03-27
+Date: 27. 03. 2019
   Changes:
     - Fixed a mistake.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.6
-Date: 2019-03-27
+Date: 27. 03. 2019
   Changes:
     - Change code for compatibility with Automatic Train Fuel Stop
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.5
-Date: 2019-03-21
+Date: 21. 03. 2019
   Changes:
     - Next attempt to fix the "item without a fuel value" error. https://mods.factorio.com/mod/ElectricTrain/discussion/5c7bd6de961aa5000cbe7693
     - Attempt to fix the performance issues.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.4
-Date: 2019-03-17
+Date: 17. 03. 2019
   Changes:
     - Next attempt to fix the "item without a fuel value" error. https://mods.factorio.com/mod/ElectricTrain/discussion/5c7bd6de961aa5000cbe7693
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.3
-Date: 2019-03-10
+Date: 10. 03. 2019
   Changes:
     - Attempt to fix the "item without a fuel value" error. https://mods.factorio.com/mod/ElectricTrain/discussion/5c7bd6de961aa5000cbe7693
     - Fixed the version issue. You have to update it manually. I'm sorry :(
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.0201
-Date: 2019-03-01
+Date: 01. 03. 2019
   Major Features:
     - Release 0.17.
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.12
-Date: 2018-10-26
+Date: 26. 10. 2018
   Bugfixes:
     - Next attempt to fix the error. https://mods.factorio.com/mod/ElectricTrain/discussion/5b97a7ae21a58d000969be25
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.11
-Date: 2018-10-08
+Date: 08. 10. 2018
   Bugfixes:
     - Fixed a mod incompatibility. https://mods.factorio.com/mod/ElectricTrain/discussion/5bb7961a84c755000987c5cd
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.10
-Date: 2018-10-08
+Date: 08. 10. 2018
   Bugfixes:
     - Fixed a migrations issue. https://mods.factorio.com/mod/ElectricTrain/discussion/5bbb3281b4521f000a54c4f2
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.9
-Date: 2018-09-27
+Date: 27. 09. 2018
   Bugfixes:
     - Attempt to fix the error. https://mods.factorio.com/mod/ElectricTrain/discussion/5b97a7ae21a58d000969be25
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.8
-Date: 2018-08-16
+Date: 16. 08. 2018
   Bugfixes:
     - Next attempt to fix the error. https://mods.factorio.com/mod/ElectricTrain/discussion/5b68a354a16c56000abd2fe7
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.7
-Date: 2018-08-07
+Date: 07. 08. 2018
   Bugfixes:
     - Fixed the crash when placing power provider. https://mods.factorio.com/mod/ElectricTrain/discussion/5b68a354a16c56000abd2fe7
   Translation:
     - Russian translation. (Pull request by MasterLogick)
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.6
-Date: 2018-08-03
+Date: 03. 08. 2018
   Changes:
     - Resolving the problem that hybrid trains have consumed fuel even though power was available.
     - Fuel bar is now filled.
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.5
-Date: 2018-07-02
+Date: 02. 07. 2018
   Changes:
     - Pull request by "shanemadden". Listen for script_raised_built and script_raised_destroy events.
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.4
-Date: 2018-03-27
+Date: 27. 03. 2018
   Bugfixes:
     - Fixed crash when mined rails. https://mods.factorio.com/mod/ElectricTrain/discussion/5ab8a9e11d4344000a467985
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.3
-Date: 2018-03-05
+Date: 05. 03. 2018
   Changes:
     - Rename items/entities for compatibility.
 ---------------------------------------------------------------------------------------------------

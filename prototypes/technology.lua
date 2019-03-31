@@ -13,7 +13,7 @@ electric_railway.effects =
 			recipe = "et-electricity-provider"
 		}	
 	}
-electric_railway.prerequisites = {"railway", "electric-engine", "electric-energy-accumulators", "advanced-electronics"}
+electric_railway.prerequisites = {"railway", "electric-engine", "electric-energy-accumulators-1", "advanced-electronics"}
 electric_railway.unit =
 	{
 		count = 300,
@@ -29,17 +29,17 @@ electric_railway.order = "c-g-a-a-a"
 data:extend({electric_railway})
 
 function train_tech()
-	local electric_railway_2 = table.deepcopy(data.raw['technology']['et-electric-railway'])
-	electric_railway_2.name = "et-electric-railway-2"
-	electric_railway_2.effects = 
+	local electric_locomotive_2 = table.deepcopy(data.raw['technology']['et-electric-railway'])
+	electric_locomotive_2.name = "et-electric-locomotive-2"
+	electric_locomotive_2.effects = 
 		{
 			{
 				type = "unlock-recipe",
 				recipe = "et-electric-locomotive-2"
 			}
 		}
-	electric_railway_2.prerequisites = {"et-electric-railway", "low-density-structure"}
-	electric_railway_2.unit =
+	electric_locomotive_2.prerequisites = {"et-electric-railway", "low-density-structure"}
+	electric_locomotive_2.unit =
 		{
 			count = 200,
 			ingredients =
@@ -50,20 +50,19 @@ function train_tech()
 			},
 			time = 20
 		}
-	electric_railway_2.upgrade = true
-	electric_railway_2.order = "c-g-a-a-b"
+	electric_locomotive_2.order = "c-g-a-a-b"
 
-	local electric_railway_3 = table.deepcopy(data.raw['technology']['et-electric-railway'])
-	electric_railway_3.name = "et-electric-railway-3"
-	electric_railway_3.effects = 
+	local electric_locomotive_3 = table.deepcopy(data.raw['technology']['et-electric-railway'])
+	electric_locomotive_3.name = "et-electric-locomotive-3"
+	electric_locomotive_3.effects = 
 		{
 			{
 				type = "unlock-recipe",
 				recipe = "et-electric-locomotive-3"
 			}
 		}
-	electric_railway_3.prerequisites = {"et-electric-railway-2", "utility-science-pack"}
-	electric_railway_3.unit =
+	electric_locomotive_3.prerequisites = {"et-electric-locomotive-2", "utility-science-pack"}
+	electric_locomotive_3.unit =
 		{
 			count = 200,
 			ingredients =
@@ -75,10 +74,9 @@ function train_tech()
 			},
 			time = 20
 		}
-	electric_railway_3.upgrade = true
-	electric_railway_3.order = "c-g-a-a-c"
+	electric_locomotive_3.order = "c-g-a-a-c"
 
-	data:extend({electric_railway_2, electric_railway_3})
+	data:extend({electric_locomotive_2, electric_locomotive_3})
 end
 
 function cargo_tech()
@@ -103,7 +101,6 @@ function cargo_tech()
 			},
 			time = 20
 		}
-	cargo_wagon_2.upgrade = true
 	cargo_wagon_2.order = "c-g-a-a-d"
 
 	local cargo_wagon_3 = table.deepcopy(data.raw['technology']['railway'])
@@ -128,7 +125,6 @@ function cargo_tech()
 			},
 			time = 20
 		}
-	cargo_wagon_3.upgrade = true
 	cargo_wagon_3.order = "c-g-a-a-e"
 
 	data:extend({cargo_wagon_2, cargo_wagon_3})
@@ -157,7 +153,6 @@ function fluid_tech()
 			},
 			time = 20
 		}
-	fluid_wagon_2.upgrade = true
 	fluid_wagon_2.order = "c-g-a-a-f"
 
 	local fluid_wagon_3 = table.deepcopy(data.raw['technology']['fluid-wagon'])
@@ -182,7 +177,6 @@ function fluid_tech()
 			},
 			time = 20
 		}
-	fluid_wagon_3.upgrade = true
 	fluid_wagon_3.order = "c-g-a-a-g"
 
 	data:extend({fluid_wagon_2, fluid_wagon_3})
