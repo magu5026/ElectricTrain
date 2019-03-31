@@ -35,7 +35,7 @@ function ON_CONFIGURATION_CHANGED(data)
 	local mod_name = "ElectricTrain"
 	if IsModChanged(data,mod_name) then
 		if data.mod_changes[mod_name].old_version == "0.17.201" or GetOldVersion(data,mod_name) < "00.17.05" then
-			OnInit()
+			ON_INIT()
 			for _,surface in pairs(game.surfaces) do
 				local trains = surface.find_entities_filtered{type="locomotive"}
 				for _,train in pairs(trains) do
