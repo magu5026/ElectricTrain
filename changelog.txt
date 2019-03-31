@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.5
+Date: 21. 03. 2019
+  Changes:
+    - Next attempt to fix the "item without a fuel value" error. https://mods.factorio.com/mod/ElectricTrain/discussion/5c7bd6de961aa5000cbe7693
+    - Attempt to fix the performance issues.
+---------------------------------------------------------------------------------------------------
+Version: 0.17.4
+Date: 17. 03. 2019
+  Changes:
+    - Next attempt to fix the "item without a fuel value" error. https://mods.factorio.com/mod/ElectricTrain/discussion/5c7bd6de961aa5000cbe7693
+---------------------------------------------------------------------------------------------------
 Version: 0.17.3
 Date: 10. 03. 2019
   Changes:

@@ -6,14 +6,6 @@ data.raw['item-with-entity-data']['fluid-wagon'].subgroup = "electric-transport-
 data.raw['item-with-entity-data']['fluid-wagon'].order = "a"
 
 
-
-if not settings.startup['hybrid-train'].value then
-	data.raw['locomotive']['et-electric-locomotive-1'].burner = {effectivity = 1, fuel_inventory_size = 0}
-	data.raw['locomotive']['et-electric-locomotive-2'].burner = {effectivity = 1, fuel_inventory_size = 0}
-	data.raw['locomotive']['et-electric-locomotive-3'].burner = {effectivity = 1, fuel_inventory_size = 0}
-end
-
-
 if settings.startup['mk-train'].value then
 	train_tech()
 	train_rec()

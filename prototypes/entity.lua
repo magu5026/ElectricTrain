@@ -3,7 +3,7 @@ util.merge{data.raw.locomotive.locomotive,
 		{
 			name = "et-electric-locomotive-1",
 			minable = {mining_time = 0.5, result = "et-electric-locomotive-1"},
-			burner = {fuel_inventory_size = 1}
+			burner = {fuel_inventory_size = 0}
 		}
 	}
 })
@@ -11,7 +11,7 @@ util.merge{data.raw.locomotive.locomotive,
 local electric_locomotive_1 = table.deepcopy(data.raw['locomotive']['locomotive'])
 electric_locomotive_1.name = "et-electric-locomotive-1"
 electric_locomotive_1.minable.result = "et-electric-locomotive-1"
-electric_locomotive_1.burner =	{effectivity = 1, fuel_inventory_size = 1}
+electric_locomotive_1.burner =	{effectivity = 1, fuel_inventory_size = 0}
 
 				
 local electric_locomotive_2 = table.deepcopy(data.raw['locomotive']['locomotive'])
@@ -24,7 +24,7 @@ electric_locomotive_2.reversing_power_modifier = 0.8
 electric_locomotive_2.braking_force = 15
 electric_locomotive_2.friction_force = 0.375
 electric_locomotive_2.air_resistance = 0.005625
-electric_locomotive_2.burner =	{effectivity = 1, fuel_inventory_size = 2}				
+electric_locomotive_2.burner =	{effectivity = 1, fuel_inventory_size = 0}				
 				
 				
 local electric_locomotive_3 = table.deepcopy(data.raw['locomotive']['locomotive'])
@@ -37,7 +37,7 @@ electric_locomotive_3.reversing_power_modifier = 1
 electric_locomotive_3.braking_force = 20
 electric_locomotive_3.friction_force = 0.25
 electric_locomotive_3.air_resistance = 0.00375
-electric_locomotive_3.burner =	{effectivity = 1, fuel_inventory_size = 3}
+electric_locomotive_3.burner =	{effectivity = 1, fuel_inventory_size = 0}
 	
 
 --data:extend({electric_locomotive_1,electric_locomotive_2,electric_locomotive_3})

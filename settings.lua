@@ -1,12 +1,6 @@
 data:extend({
 	{
 		type = "bool-setting",
-		name = "hybrid-train",
-		setting_type = "startup",
-		default_value = true,
-	},
-	{
-		type = "bool-setting",
 		name = "mk-train",
 		setting_type = "startup",
 		default_value = true,
