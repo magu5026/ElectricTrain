@@ -89,7 +89,7 @@ function OnTick()
 			if provider and provider.valid then
 				provider_power = provider_power + provider.energy
 			else
-				table.remove(global.ProviderList,i)
+				global.ProviderList[i] = nil
 				anz_provider = anz_provider - 1
 			end
 		end
@@ -103,7 +103,7 @@ function OnTick()
 					end
 					need_power = need_power + train.burner.currently_burning.fuel_value - train.burner.remaining_burning_fuel		
 				else
-					table.remove(global.TrainList,i)
+					global.TrainList[i] = nil				
 					anz_train = anz_train - 1
 				end
 			end
@@ -112,19 +112,39 @@ function OnTick()
 			rest_power = provider_power - need_power
 			if rest_power >= 0 then
 				for _,train in pairs(global.TrainList) do
-					train.burner.remaining_burning_fuel = train.burner.currently_burning.fuel_value
+					if train and train.valid then
+						train.burner.remaining_burning_fuel = train.burner.currently_burning.fuel_value
+					else
+						global.TrainList[i] = nil				
+						anz_train = anz_train - 1
+					end
 				end
-				split_power = rest_power / #global.ProviderList
+				split_power = rest_power / anz_provider
 				for _,provider in pairs(global.ProviderList) do
-					provider.energy = split_power
+					if provider and provider.valid then
+						provider.energy = split_power
+					else
+						global.ProviderList[i] = nil
+						anz_provider = anz_provider - 1
+					end
 				end
 			else
 				for _,provider in pairs(global.ProviderList) do
-					provider.energy = 0
+					if provider and provider.valid then
+						provider.energy = 0
+					else
+						global.ProviderList[i] = nil
+						anz_provider = anz_provider - 1
+					end
 				end
-				split_power = provider_power / #global.TrainList
-				for _,train in pairs(global.TrainList) do
-					train.burner.remaining_burning_fuel = train.burner.remaining_burning_fuel + split_power
+				split_power = provider_power / anz_train
+				for i,train in pairs(global.TrainList) do
+					if train and train.valid then	
+						train.burner.remaining_burning_fuel = train.burner.remaining_burning_fuel + split_power
+					else
+						global.TrainList[i] = nil				
+						anz_train = anz_train - 1
+					end
 				end
 			end
 		end
