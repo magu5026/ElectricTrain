@@ -1,4 +1,4 @@
-function NeedMigration(data,modname)
+function IsModChanged(data,modname)
 	if data 
 	 and data.mod_changes 
 	 and data.mod_changes[modname] 
