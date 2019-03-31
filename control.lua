@@ -4,21 +4,34 @@ local anz_train = 0
 local anz_provider = 0
 
 
+function CallRemoteInterface()
+	if remote.interfaces["FuelTrainStop"] then
+		remote.call("FuelTrainStop", "exclude_from_fuel_schedule", "et-electric-locomotive-1")
+		remote.call("FuelTrainStop", "exclude_from_fuel_schedule", "et-electric-locomotive-2")
+		remote.call("FuelTrainStop", "exclude_from_fuel_schedule", "et-electric-locomotive-3")
+	end
+end
+
 function OnInit()
 	global = {}
 	global.TrainList = {}
 	global.ProviderList = {}
+	
+	CallRemoteInterface()
 end
 script.on_init(OnInit)
-
 
 function OnLoad()
 	anz_train = Count(global.TrainList)
 	anz_provider = Count(global.ProviderList)
+	
+	CallRemoteInterface()
 end
 script.on_load(OnLoad)
 
 function OnConfigurationChanged(data)
+	CallRemoteInterface()
+
 	local mod_name = "ElectricTrain"
 	if IsModChanged(data,mod_name) then
 		if data.mod_changes[mod_name].old_version == "0.17.201" or GetOldVersion(data,mod_name) < "00.17.05" then
