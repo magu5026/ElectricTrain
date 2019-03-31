@@ -12,24 +12,24 @@ function CallRemoteInterface()
 	end
 end
 
-function OnInit()
+function ON_INIT()
 	global = {}
 	global.TrainList = {}
 	global.ProviderList = {}
 	
 	CallRemoteInterface()
 end
-script.on_init(OnInit)
+script.on_init(ON_INIT)
 
-function OnLoad()
+function ON_LOAD()
 	anz_train = Count(global.TrainList)
 	anz_provider = Count(global.ProviderList)
 	
 	CallRemoteInterface()
 end
-script.on_load(OnLoad)
+script.on_load(ON_LOAD)
 
-function OnConfigurationChanged(data)
+function ON_CONFIGURATION_CHANGED(data)
 	CallRemoteInterface()
 
 	local mod_name = "ElectricTrain"
@@ -57,28 +57,31 @@ function OnConfigurationChanged(data)
 		end
 	end
 end
-script.on_configuration_changed(OnConfigurationChanged)
+script.on_configuration_changed(ON_CONFIGURATION_CHANGED)
 
 --error(global.FuelValue)
-function OnBuilt(event)
-	local entity = event.created_entity
+function ON_BUILT_ENTITY(event)
+	local entity = event.created_entity or event.entity
 	if entity and entity.valid then
 		if entity.name == "et-electricity-provider" and entity.type == "electric-energy-interface" then
 			table.insert(global.ProviderList,entity)
 			anz_provider = anz_provider + 1
-		elseif entity.name:match("^et%-electric%-locomotive%-%d$") and entity.type == "locomotive" then 
+		elseif entity.type == "locomotive" then
+			if entity.name:match("^et%-electric%-locomotive%-%d$") or entity.name:match("^et%-electric%-locomotive%-%d-mu$") then 
 			table.insert(global.TrainList,entity)
 			entity.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
 			entity.burner.remaining_burning_fuel = entity.burner.currently_burning.fuel_value
 			anz_train = anz_train + 1
+			end
 		end
 	end
 end
-script.on_event({defines.events.on_built_entity,defines.events.on_robot_built_entity,defines.events.script_raised_built},OnBuilt)
+script.on_event({defines.events.on_built_entity,defines.events.on_robot_built_entity,defines.events.script_raised_built},ON_BUILT_ENTITY)
+
 
 local is_fuel_removed = false
 
-function OnTick()
+function ON_TICK()
 	if anz_provider > 0 and anz_train > 0 then
 		local need_power = 0
 		local provider_power = 0
@@ -154,7 +157,7 @@ function OnTick()
 		end
 	end
 end
-script.on_event(defines.events.on_tick,OnTick)
+script.on_event(defines.events.on_tick,ON_TICK)
 
 function RemoveTrainFuel()
 	for i,train in pairs(global.TrainList) do

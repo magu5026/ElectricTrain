@@ -1,9 +1,9 @@
 {
 	"name":"ElectricTrain",
 	"author":"magu5026",
-	"version":"0.17.8",
+	"version":"0.17.10",
 	"title":"Electric Train",
 	"description":"Adds electric locomotives to the game.",
 	"factorio_version":"0.17",
-	"dependencies": ["base >= 0.17.21", "?FactorioExtended-Trains", "?boblogistics", "?Vehicle Wagon", "?EvenMoreLight"]
+	"dependencies": ["base >= 0.17.23", "?FactorioExtended-Trains", "?boblogistics", "?Vehicle Wagon", "?EvenMoreLight"]
 }
