@@ -42,7 +42,7 @@ function OnTick()
 		return
 	end
 
-	local provider_energy  = 0
+	local provider_energy = 0
 
 	for i,provider in pairs(global.ProviderList) do
 		if provider and provider.valid then
@@ -71,16 +71,18 @@ function OnTick()
 				remaining_fuel = 0
 			end
 
-			remaining_fuel = remaining_fuel + stored_energy
+			if stored_energy > 0 then
+				remaining_fuel = remaining_fuel + stored_energy
+				burner.remaining_burning_fuel = remaining_fuel
+				train.stored_energy = 0
+			end
 
 			if remaining_fuel > fuel_value then
 				remaining_fuel = fuel_value
+				burner.remaining_burning_fuel = remaining_fuel
 			end
 
                         need_energy = need_energy + fuel_value - remaining_fuel
-
-			burner.remaining_burning_fuel = remaining_fuel
-			train.stored_energy = 0
 		else
 			table.remove(global.TrainList,i)
 		end
