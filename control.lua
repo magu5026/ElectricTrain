@@ -22,7 +22,7 @@ function Load()
 	CallRemoteInterface()
 
 	anzLoc = table.count(global.LocList)
-	anzControl = table.count(global.ControlList)
+	anzControl = table.count(global.ControlList)	
 end
 
 function Reinitialize()
@@ -49,45 +49,39 @@ function OnConfigurationChanged(data)
 	if not IsModChanged(data,modName) then
 		Load()
 	else
-		Reinitialize()
-		if IsModChanged(data,modName) then
-			if not (GetOldVersion(data,modName) < "00.17.27") then
-				Init()
+		oldVersion = GetOldVersion(data,modName)
+		newVersion = GetNewVersion(data,modName)
 
-				for _,force in pairs(game.forces) do
-					local tech = force.technologies['et-electric-railway']
-					if tech and tech.researched then 
-						force.recipes['et-control-station-1'].enabled = true
-						force.recipes['et-current-collector'].enabled = true
+		if oldVersion == newVersion then
+			Reinitialize()
+		else
+			Init()
+		
+			for _,surface in pairs(game.surfaces) do
+				local trains = surface.find_entities_filtered{type="locomotive"}
+				for _,train in pairs(trains) do
+					if train.name:match("^et%-electric%-locomotive%-%d$") or train.name:match("^et%-electric%-locomotive%-%d%-mu$") then
+						table.insert(global.LocList,{entity=train,provider=nil})
+						train.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
 					end
-				end
-				
-				for _,surface in pairs(game.surfaces) do
-					local trains = surface.find_entities_filtered{type="locomotive"}
-					for _,train in pairs(trains) do
-						if train.name:match("^et%-electric%-locomotive%-%d$") or train.name:match("^et%-electric%-locomotive%-%d%-mu$") then
-							table.insert(global.LocList,{entity=train,provider=nil})
-							train.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
-						end
-					end	
-				end
-				
-				anzLoc = table.count(global.LocList)
-				
-				for _,surface in pairs(game.surfaces) do
-					local controls = surface.find_entities_filtered{type="electric-energy-interface"}
-					for _,control in pairs(controls) do
-						if control.name:match("^et%-control%-station%-%d$") then
-							table.insert(global.ControlList,control)
-						end
-						if control.name:match("^et%-electric%-locomotive%-%d%-power$") or control.name:match("^et%-electric%-locomotive%-%d%-mu-power$") then
-							control.destroy()
-						end
-					end	
-				end
-				
-				anzControl = table.count(global.ControlList)
+				end	
 			end
+			
+			anzLoc = table.count(global.LocList)
+			
+			for _,surface in pairs(game.surfaces) do
+				local controls = surface.find_entities_filtered{type="electric-energy-interface"}
+				for _,control in pairs(controls) do
+					if control.name:match("^et%-control%-station%-%d$") then
+						table.insert(global.ControlList,control)
+					end
+					if control.name:match("^et%-electric%-locomotive%-%d%-power$") or control.name:match("^et%-electric%-locomotive%-%d%-mu-power$") then
+						control.destroy()
+					end
+				end	
+			end
+			
+			anzControl = table.count(global.ControlList)
 		end
 	end
 end

@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.29
+Date: 2019-11-02
+  Bugfixes:
+    - Try to fix uncraftable Control Station and Current Collector. https://mods.factorio.com/mod/ElectricTrain/discussion/5da63511338655000dcee54f 
+---------------------------------------------------------------------------------------------------
 Version: 0.17.28
 Date: 2019-08-31
   Bugfixes:
