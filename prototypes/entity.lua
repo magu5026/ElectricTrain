@@ -125,17 +125,25 @@ data:extend({fluid_wagon_2,fluid_wagon_3})
 function format_number(number_string)
 	local number = number_string:match('%d+%.?%d+')
 	local append_suffix = number_string:match('%a+')
-
-	local pre =  append_suffix:sub(1, 1)
-	local typ =  append_suffix:sub(2)
 	
-	if pre == "K" or pre == "k" then
+	local pre = ""
+	local typ = ""
+	
+	if append_suffix:len() == 2 then
+		pre =  append_suffix:sub(1, 1):upper()
+		typ =  append_suffix:sub(2):upper()
+	elseif append_suffix:len() == 1 then
+		typ = append_suffix:upper()
+	end
+
+	
+	if pre == "K" then
 		number = number * 1000
-	elseif pre == "M" or pre == "m" then
+	elseif pre == "M" then
 		number = number * 1000000
 	end
 		
-	if typ == "W" or typ == "w" then
+	if typ == "W" then
 		number = number / 60
 	end
 	return number
@@ -183,8 +191,36 @@ CreateTrainInterface(data.raw['locomotive']['et-electric-locomotive-1'])
 CreateTrainInterface(data.raw['locomotive']['et-electric-locomotive-2'])
 CreateTrainInterface(data.raw['locomotive']['et-electric-locomotive-3'])
 
+function InsertMUControl(name)
+	data:extend(
+	{
+		{
+			type = "electric-energy-interface",
+			name = name .. "-power",
+			icon = "__core__/graphics/empty.png",
+			icon_size = 32,
+			collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
+			selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+			collision_mask = {"ground-tile"},
+			selectable_in_game = false,
+			energy_source =
+			{
+				type = "void"
+			},
+			picture =
+			{
+				filename = "__core__/graphics/empty.png",
+				priority = "extra-high",
+				width = 1,
+				height = 1
+			},
+			order = "z"
+		}
+	})
+end
+
 if mods['MultipleUnitTrainControl'] then
-	CreateTrainInterface(data.raw['locomotive']['et-electric-locomotive-1-mu'])	
-	CreateTrainInterface(data.raw['locomotive']['et-electric-locomotive-2-mu'])
-	CreateTrainInterface(data.raw['locomotive']['et-electric-locomotive-3-mu'])
+	InsertMUControl("et-electric-locomotive-1-mu")
+	InsertMUControl("et-electric-locomotive-2-mu")
+	InsertMUControl("et-electric-locomotive-3-mu")
 end
