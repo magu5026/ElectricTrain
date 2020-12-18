@@ -3,6 +3,7 @@ data:extend(
 	{
 		type = "recipe",
 		name = "et-electric-locomotive-1",
+		enabled = false,
 		ingredients =
 		{
 			{"locomotive", 1},
@@ -16,6 +17,7 @@ data:extend(
 	{
 		type = "recipe",
 		name = "et-control-station-1",
+		enabled = false,
 		ingredients =
 		{
 			{"electronic-circuit", 20},
@@ -29,6 +31,7 @@ data:extend(
 	{
 		type = "recipe",
 		name = "et-current-collector",
+		enabled = false,
 		ingredients =
 		{
 			{"low-density-structure", 10},
@@ -46,6 +49,7 @@ function UnlockTrainRecipe()
 		{	
 			type = "recipe",
 			name = "et-electric-locomotive-2",
+			enabled = false,
 			ingredients =
 			{
 				{"et-electric-locomotive-1", 1},
@@ -59,6 +63,7 @@ function UnlockTrainRecipe()
 		{	
 			type = "recipe",
 			name = "et-electric-locomotive-3",
+			enabled = false,
 			ingredients =
 			{
 				{"et-electric-locomotive-2", 1},
@@ -77,6 +82,7 @@ function UnlockCargoRecipe()
 		{	
 			type = "recipe",
 			name = "et-cargo-wagon-2",
+			enabled = false,
 			ingredients =
 			{
 				{"cargo-wagon", 1},
@@ -90,6 +96,7 @@ function UnlockCargoRecipe()
 		{	
 			type = "recipe",
 			name = "et-cargo-wagon-3",
+			enabled = false,
 			ingredients =
 			{
 				{"et-cargo-wagon-2", 1},
@@ -108,6 +115,7 @@ function UnlockFluidRecipe()
 		{	
 			type = "recipe",
 			name = "et-fluid-wagon-2",
+			enabled = false,
 			ingredients =
 			{
 				{"fluid-wagon", 1},
@@ -123,6 +131,7 @@ function UnlockFluidRecipe()
 		{	
 			type = "recipe",
 			name = "et-fluid-wagon-3",
+			enabled = false,
 			ingredients =
 			{
 				{"et-fluid-wagon-2", 1},
@@ -145,6 +154,7 @@ data:extend(
 	{
 		type = "recipe",
 		name = "et-electricity-provider",
+		enabled = false,
 		subgroup = "electric-transport-basic",
 		icon = "__ElectricTrain__/graphics/power-provider-icon.png",
 		icon_size = 32,

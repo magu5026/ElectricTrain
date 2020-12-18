@@ -52,16 +52,16 @@ function OnConfigurationChanged(data)
 		Load()
 	else
 		Reinitialize()
-	
 		if IsModChanged(data,modName) then
-			if not GetOldVersion(data,modName) == "00.17.20" then
+			if not (GetOldVersion(data,modName) == "00.17.21") then
 				Init()
-				
+
 				for _,force in pairs(game.forces) do
 					local tech = force.technologies['et-electric-railway']
 					if tech and tech.researched then 
 						force.recipes['et-control-station-1'].enabled = true
 					end
+					force.recipes['et-electricity-provider'].enabled = true
 				end
 				
 				for _,surface in pairs(game.surfaces) do
@@ -75,6 +75,20 @@ function OnConfigurationChanged(data)
 				end
 				
 				anzLoc = Count(global.LocList)
+				
+				for _,surface in pairs(game.surfaces) do
+					local controls = surface.find_entities_filtered{type="electric-energy-interface"}
+					for _,control in pairs(controls) do
+						if control.name:match("^et%-control%-station%-%d$") then
+							table.insert(global.ControlList,control)
+						end
+						if control.name:match("^et%-electric%-locomotive%-%d%-power$") then
+							control.destroy()
+						end
+					end	
+				end
+				
+				anzControl = Count(global.ControlList)
 			end
 		end
 	end
@@ -110,7 +124,7 @@ function OnRemoveEntity(event)
 						end
 						loc.provider = nil
 					end
-					global.ControlList[i] = nil
+					table.remove(global.ControlList,i)
 					anzControl = anzControl - 1
 					break
 				end
@@ -122,7 +136,7 @@ function OnRemoveEntity(event)
 						if loc.provider and loc.provider.valid then
 							loc.provider.destroy()
 						end
-						global.LocList[i] = nil
+						table.remove(global.LocList,i)
 						anzLoc = anzLoc - 1
 						break
 					end
@@ -151,7 +165,7 @@ function RemoveLoc(i)
 			global.LocList[i].provider.destroy()
 		end
 	end
-	global.LocList[i] = nil
+	table.remove(global.LocList,i)
 end
 
 function OnTick()
