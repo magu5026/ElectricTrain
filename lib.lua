@@ -45,6 +45,8 @@ end
 
 
 function Count(list)
+	if not list then return 0 end
+
 	local i = 0
 	for _ in pairs(list) do
 		i = i + 1
