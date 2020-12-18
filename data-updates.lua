@@ -1,4 +1,4 @@
-data.raw['item-with-entity-data']['locomotive'].subgroup = "electric-transport-log"
+data.raw['item-with-entity-data']['locomotive'].subgroup = "electric-transport-loc"
 data.raw['item-with-entity-data']['locomotive'].order = "a"
 data.raw['item-with-entity-data']['cargo-wagon'].subgroup = "electric-transport-cargo"
 data.raw['item-with-entity-data']['cargo-wagon'].order = "a"
@@ -7,27 +7,27 @@ data.raw['item-with-entity-data']['fluid-wagon'].order = "a"
 
 
 if settings.startup['mk-train'].value then
-	train_tech()
-	train_rec()
+	UnlockTrainRecipe()
+	UnlockTrainTechnology()
 end
 
 
 if not (mods['boblogistics'] or mods['FactorioExtended-Trains']) then
 	if settings.startup['mk-cargo'].value then
-		cargo_tech()
-		cargo_rec()
+		UnlockCargoRecipe()
+		UnlockCargoTechnology()
 	end
 	if settings.startup['mk-fluid'].value then
-		fluid_tech()
-		fluid_rec()
+		UnlockFluidRecipe()
+		UnlockFluidTechnology()
 	end
 	if settings.startup['mk-train'].value then
-		data.raw['artillery-wagon']['artillery-wagon'].max_speed = 3
+		data.raw['artillery-wagon']['artillery-wagon'].max_speed = 2.4
 		if not settings.startup['mk-cargo'].value then
-			data.raw['cargo-wagon']['cargo-wagon'].max_speed = 3
+			data.raw['cargo-wagon']['cargo-wagon'].max_speed = 2.4
 		end
 		if not settings.startup['mk-fluid'].value then
-			data.raw['fluid-wagon']['fluid-wagon'].max_speed = 3
+			data.raw['fluid-wagon']['fluid-wagon'].max_speed = 2.4
 		end
 	end	
 end
@@ -36,16 +36,17 @@ end
 if mods['Vehicle Wagon'] and settings.startup['mk-train'].value then
 	for _,wagon in pairs(data.raw['cargo-wagon']) do
 		if wagon.name:match("vehicle%-wagon") then	
-			wagon.max_speed = 3
+			wagon.max_speed = 2.4
 		end
 	end
 end
 
+
 if mods['FactorioExtended-Trains'] and settings.startup['mk-train'].value then
-	data.raw['cargo-wagon']['cargo-wagon-2'].max_speed = 2.25
-	data.raw['cargo-wagon']['cargo-wagon-3'].max_speed = 3
-	data.raw['fluid-wagon']['fluid-wagon-2'].max_speed = 2.25
-	data.raw['fluid-wagon']['fluid-wagon-3'].max_speed = 3	
+	data.raw['cargo-wagon']['cargo-wagon-2'].max_speed = 1.8
+	data.raw['cargo-wagon']['cargo-wagon-3'].max_speed = 2.4
+	data.raw['fluid-wagon']['fluid-wagon-2'].max_speed = 1.8
+	data.raw['fluid-wagon']['fluid-wagon-3'].max_speed = 2.4
 end
 
 

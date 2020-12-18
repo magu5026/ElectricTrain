@@ -1,8 +1,7 @@
 require("lib")
 
-local anz_train = 0
-local anz_provider = 0
-
+local anzLoc = 0
+local anzControl = 0
 
 function CallRemoteInterface()
 	if remote.interfaces["FuelTrainStop"] then
@@ -12,160 +11,172 @@ function CallRemoteInterface()
 	end
 end
 
-function ON_INIT()
+function Init()
 	global = {}
-	global.TrainList = {}
-	global.ProviderList = {}
+	global.LocList = {}
+	global.ControlList = {}	
+end
+
+function Load()
+	CallRemoteInterface()
+
+	anzLoc = Count(global.LocList)
+	anzControl = Count(global.ControlList)
+end
+
+function Reinitialize()
+	global = global or {}
+	global.LocList = global.LocList or {}
+	global.ControlList = global.ControlList or {}
+
+	anzLoc = Count(global.LocList)
+	anzControl = Count(global.ControlList)	
 	
 	CallRemoteInterface()
 end
-script.on_init(ON_INIT)
 
-function ON_LOAD()
-	anz_train = Count(global.TrainList)
-	anz_provider = Count(global.ProviderList)
-	
+function OnInit()
+	Init()
 	CallRemoteInterface()
 end
-script.on_load(ON_LOAD)
+script.on_init(OnInit)
 
-function ON_CONFIGURATION_CHANGED(data)
-	CallRemoteInterface()
+function OnLoad()
+	Load()
+end
+script.on_load(OnLoad)
 
-	local mod_name = "ElectricTrain"
-	if IsModChanged(data,mod_name) then
-		if data.mod_changes[mod_name].old_version == "0.17.201" or GetOldVersion(data,mod_name) < "00.17.05" then
-			ON_INIT()
-			for _,surface in pairs(game.surfaces) do
-				local trains = surface.find_entities_filtered{type="locomotive"}
-				for _,train in pairs(trains) do
-					if train.name:match("^et%-electric%-locomotive%-%d$") or train.name:match("^et%-electric%-locomotive%-%d%-mu$") then
-						table.insert(global.TrainList,train)
-						train.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
-						train.burner.remaining_burning_fuel = train.burner.currently_burning.fuel_value
+function OnConfigurationChanged(data)
+	local modName = "ElectricTrain"
+	if not IsModChanged(data,modName) then
+		Load()
+	else
+		Reinitialize()
+	
+		if IsModChanged(data,modName) then
+			if not GetOldVersion(data,modName) == "00.17.20" then
+				Init()
+				
+				for _,force in pairs(game.forces) do
+					local tech = force.technologies['et-electric-railway']
+					if tech and tech.researched then 
+						force.recipes['et-control-station-1'].enabled = true
 					end
-				end	
-				local providers = surface.find_entities_filtered{type="electric-energy-interface"}
-				for _,provider in pairs(providers) do
-					if provider.name == "et-electricity-provider" then
-						table.insert(global.ProviderList,provider)
-					end
-				end	
+				end
+				
+				for _,surface in pairs(game.surfaces) do
+					local trains = surface.find_entities_filtered{type="locomotive"}
+					for _,train in pairs(trains) do
+						if train.name:match("^et%-electric%-locomotive%-%d$") or train.name:match("^et%-electric%-locomotive%-%d%-mu$") then
+							table.insert(global.LocList,{entity=train,provider=nil})
+							train.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
+						end
+					end	
+				end
+				
+				anzLoc = Count(global.LocList)
 			end
-			anz_train = Count(global.TrainList)
-			anz_provider = Count(global.ProviderList)
 		end
 	end
 end
-script.on_configuration_changed(ON_CONFIGURATION_CHANGED)
+script.on_configuration_changed(OnConfigurationChanged)
 
---error(global.FuelValue)
-function ON_BUILT_ENTITY(event)
+function OnBuiltEntity(event)
 	local entity = event.created_entity or event.entity
 	if entity and entity.valid then
-		if entity.name == "et-electricity-provider" and entity.type == "electric-energy-interface" then
-			table.insert(global.ProviderList,entity)
-			anz_provider = anz_provider + 1
+		if entity.name:match("^et%-control%-station%-%d$") then
+			table.insert(global.ControlList,entity)
+			anzControl = anzControl + 1
 		elseif entity.type == "locomotive" then
 			if entity.name:match("^et%-electric%-locomotive%-%d$") or entity.name:match("^et%-electric%-locomotive%-%d%-mu$") then 
-			table.insert(global.TrainList,entity)
+			table.insert(global.LocList,{entity=entity,provider=nil})
 			entity.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
-			entity.burner.remaining_burning_fuel = entity.burner.currently_burning.fuel_value
-			anz_train = anz_train + 1
+			anzLoc = anzLoc + 1
 			end
 		end
 	end
 end
-script.on_event({defines.events.on_built_entity,defines.events.on_robot_built_entity,defines.events.script_raised_built},ON_BUILT_ENTITY)
+script.on_event({defines.events.on_built_entity,defines.events.on_robot_built_entity,defines.events.script_raised_built},OnBuiltEntity)
 
+function OnRemoveEntity(event)
+	local entity = event.entity
+	if entity and entity.valid then
+		if entity.name:match("^et%-control%-station%-%d$") then		
+			for i,control in pairs(global.ControlList) do
+				if control == entity then
+					for _,loc in pairs(global.LocList) do
+						if loc.provider and loc.provider.valid then
+							loc.provider.destroy()
+						end
+						loc.provider = nil
+					end
+					global.ControlList[i] = nil
+					anzControl = anzControl - 1
+					break
+				end
+			end
+		elseif entity.type == "locomotive" then
+			if entity.name:match("^et%-electric%-locomotive%-%d$") or entity.name:match("^et%-electric%-locomotive%-%d%-mu$") then 
+				for i,loc in pairs(global.LocList) do
+					if loc.entity == entity then
+						if loc.provider and loc.provider.valid then
+							loc.provider.destroy()
+						end
+						global.LocList[i] = nil
+						anzLoc = anzLoc - 1
+						break
+					end
+				end
+			end
+		end
+	end
+end
+script.on_event({defines.events.on_pre_player_mined_item,defines.events.on_robot_pre_mined,defines.events.on_entity_died,defines.events.script_raised_destroy},OnRemoveEntity)
 
-local is_fuel_removed = false
+function CreateProvider(loc)
+	local control = global.ControlList[1]
+	local pos = control.position
+	local surface = control.surface
+	local force = control.force
+	local entity = surface.create_entity{name=loc.entity.name.."-power",position=pos,force=force}
+	loc.provider = entity
+end
 
-function ON_TICK()
-	if anz_provider > 0 and anz_train > 0 then
-		local need_power = 0
-		local provider_power = 0
-		local rest_power = 0
-		local split_power = 0
-		
-		for i,provider in pairs(global.ProviderList) do
-			if provider and provider.valid then
-				provider_power = provider_power + provider.energy
+function RemoveLoc(i)
+	if global.LocList[i] then
+		if global.LocList[i].entity and global.LocList[i].entity.valid then
+			global.LocList[i].entity.destroy()
+		end
+		if global.LocList[i].provider and global.LocList[i].provider.valid then
+			global.LocList[i].provider.destroy()
+		end
+	end
+	global.LocList[i] = nil
+end
+
+function OnTick()
+	if anzLoc > 0 and anzControl > 0 then
+		for i,loc in pairs(global.LocList) do
+			if loc and loc.entity and loc.entity.valid then
+				if not (loc.provider and loc.provider.valid) then
+					CreateProvider(loc)
+				else	
+					needPower = loc.entity.burner.currently_burning.fuel_value - loc.entity.burner.remaining_burning_fuel
+					
+					restPower = loc.provider.energy - needPower
+					if restPower > 0 then
+						loc.entity.burner.remaining_burning_fuel = loc.entity.burner.currently_burning.fuel_value
+						loc.provider.energy = loc.provider.energy - needPower
+					else
+						loc.entity.burner.remaining_burning_fuel = loc.entity.burner.remaining_burning_fuel + loc.provider.energy
+						loc.provider.energy = 0
+					end
+				end
 			else
-				global.ProviderList[i] = nil
-				anz_provider = anz_provider - 1
+				RemoveLoc(i)
 			end
-		end
-			
-		if provider_power > 0 then 
-			for i,train in pairs(global.TrainList) do
-				if train and train.valid then
-					if is_fuel_removed then
-						train.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
-						train.burner.remaining_burning_fuel = train.burner.currently_burning.fuel_value
-					end
-					need_power = need_power + train.burner.currently_burning.fuel_value - train.burner.remaining_burning_fuel		
-				else
-					global.TrainList[i] = nil				
-					anz_train = anz_train - 1
-				end
-			end
-			is_fuel_removed = false
-		
-			rest_power = provider_power - need_power
-			if rest_power >= 0 then
-				for _,train in pairs(global.TrainList) do
-					if train and train.valid then
-						train.burner.remaining_burning_fuel = train.burner.currently_burning.fuel_value
-					else
-						global.TrainList[i] = nil				
-						anz_train = anz_train - 1
-					end
-				end
-				split_power = rest_power / anz_provider
-				for _,provider in pairs(global.ProviderList) do
-					if provider and provider.valid then
-						provider.energy = split_power
-					else
-						global.ProviderList[i] = nil
-						anz_provider = anz_provider - 1
-					end
-				end
-			else
-				for _,provider in pairs(global.ProviderList) do
-					if provider and provider.valid then
-						provider.energy = 0
-					else
-						global.ProviderList[i] = nil
-						anz_provider = anz_provider - 1
-					end
-				end
-				split_power = provider_power / anz_train
-				for i,train in pairs(global.TrainList) do
-					if train and train.valid then	
-						train.burner.remaining_burning_fuel = train.burner.remaining_burning_fuel + split_power
-					else
-						global.TrainList[i] = nil				
-						anz_train = anz_train - 1
-					end
-				end
-			end
-		end
-	else
-		if anz_train > 0 and anz_provider == 0 and not is_fuel_removed then
-			RemoveTrainFuel()
 		end
 	end
 end
-script.on_event(defines.events.on_tick,ON_TICK)
-
-function RemoveTrainFuel()
-	for i,train in pairs(global.TrainList) do
-		if train and train.valid then
-			train.burner.currently_burning = nil
-		else
-			global.TrainList[i] = nil
-		end
-	end
-	is_fuel_removed = true
-end
+--script.on_event(defines.events.on_tick,OnTick)
+script.on_nth_tick(2,OnTick)

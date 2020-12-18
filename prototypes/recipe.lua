@@ -1,106 +1,161 @@
-local electric_locomotive_1 = table.deepcopy(data.raw['recipe']['locomotive'])
-electric_locomotive_1.name = "et-electric-locomotive-1"
-electric_locomotive_1.ingredients =
+data:extend(
+{
 	{
-		{"locomotive", 1},
-		{"battery", 10},
-		{"electric-engine-unit", 10}	
-	}
-electric_locomotive_1.result = "et-electric-locomotive-1"
-
-local electric_locomotive_2 = table.deepcopy(data.raw['recipe']['locomotive'])
-electric_locomotive_2.name = "et-electric-locomotive-2"
-electric_locomotive_2.ingredients =
+		type = "recipe",
+		name = "et-electric-locomotive-1",
+		ingredients =
+		{
+			{"locomotive", 1},
+			{"et-current-collector", 2},
+			{"battery", 10},
+			{"electric-engine-unit", 10}
+		},
+		result = "et-electric-locomotive-1"
+	},
+	
 	{
-		{"et-electric-locomotive-1", 1},
-		{"battery", 10},
-		{"low-density-structure", 10},
-		{"electric-engine-unit", 10},
-		{"advanced-circuit", 10}
-	}
-electric_locomotive_2.result = "et-electric-locomotive-2"
+		type = "recipe",
+		name = "et-control-station-1",
+		ingredients =
+		{
+			{"electronic-circuit", 20},
+			{"advanced-circuit", 20},
+			{"steel-plate", 10},
+			{"copper-cable", 10}
+		},
+		result = "et-control-station-1"
+	},
 
-local electric_locomotive_3 = table.deepcopy(data.raw['recipe']['locomotive'])
-electric_locomotive_3.name = "et-electric-locomotive-3"
-electric_locomotive_3.ingredients =
 	{
-		{"et-electric-locomotive-2", 1},
-		{"battery", 10},
-		{"low-density-structure", 10},
-		{"electric-engine-unit", 10},
-		{"processing-unit", 10}	
+		type = "recipe",
+		name = "et-current-collector",
+		ingredients =
+		{
+			{"low-density-structure", 10},
+			{"copper-cable", 5},
+			{"iron-plate", 2}
+		},
+		result = "et-current-collector"
 	}
-electric_locomotive_3.result = "et-electric-locomotive-3"
+})
 
-local cargo_wagon_2 = table.deepcopy(data.raw['recipe']['cargo-wagon'])
-cargo_wagon_2.name = "et-cargo-wagon-2"
-cargo_wagon_2.ingredients =
+
+function UnlockTrainRecipe()
+	data:extend(
 	{
-		{"cargo-wagon", 1},
-		{"iron-gear-wheel", 20},
-		{"steel-plate", 20},
-		{"low-density-structure", 10}		
-	}
-cargo_wagon_2.result = "et-cargo-wagon-2"
-
-local cargo_wagon_3 = table.deepcopy(data.raw['recipe']['cargo-wagon'])
-cargo_wagon_3.name = "et-cargo-wagon-3"
-cargo_wagon_3.ingredients =
-	{
-		{"et-cargo-wagon-2", 1},
-		{"iron-gear-wheel", 20},
-		{"steel-plate", 20},
-		{"low-density-structure", 10}		
-	}
-cargo_wagon_3.result = "et-cargo-wagon-3"
-
-local fluid_wagon_2 = table.deepcopy(data.raw['recipe']['fluid-wagon'])
-fluid_wagon_2.name = "et-fluid-wagon-2"
-fluid_wagon_2.ingredients =
-	{
-		{"fluid-wagon", 1},
-		{"iron-gear-wheel", 10},
-		{"steel-plate", 16},
-		{"pipe", 8},
-		{"storage-tank", 1},
-		{"low-density-structure", 10}		
-	}
-fluid_wagon_2.result = "et-fluid-wagon-2"
-
-local fluid_wagon_3 = table.deepcopy(data.raw['recipe']['fluid-wagon'])
-fluid_wagon_3.name = "et-fluid-wagon-3"
-fluid_wagon_3.ingredients =
-	{
-		{"et-fluid-wagon-2", 1},
-		{"iron-gear-wheel", 10},
-		{"steel-plate", 16},
-		{"pipe", 8},
-		{"storage-tank", 1},
-		{"low-density-structure", 10}		
-	}
-fluid_wagon_3.result = "et-fluid-wagon-3"
-
-local electricity_provider = table.deepcopy(data.raw['recipe']['accumulator'])
-electricity_provider.name = "et-electricity-provider"
-electricity_provider.ingredients =
-	{
-		{"accumulator", 2},
-		{"advanced-circuit", 1}
-	}
-electricity_provider.result = "et-electricity-provider"
-
-
-data:extend({electric_locomotive_1,electricity_provider})
-
-
-function train_rec()
-	data:extend({electric_locomotive_2,electric_locomotive_3})
+		{	
+			type = "recipe",
+			name = "et-electric-locomotive-2",
+			ingredients =
+			{
+				{"et-electric-locomotive-1", 1},
+				{"low-density-structure", 10},
+				{"electric-engine-unit", 10},
+				{"advanced-circuit", 10}
+			},
+			result = "et-electric-locomotive-2"
+		},
+		
+		{	
+			type = "recipe",
+			name = "et-electric-locomotive-3",
+			ingredients =
+			{
+				{"et-electric-locomotive-2", 1},
+				{"low-density-structure", 10},
+				{"electric-engine-unit", 10},
+				{"processing-unit", 10}	
+			},
+			result = "et-electric-locomotive-3"
+		}
+	})
 end
 
-function cargo_rec()
-	data:extend({cargo_wagon_2,cargo_wagon_3})
+function UnlockCargoRecipe()
+	data:extend(
+	{
+		{	
+			type = "recipe",
+			name = "et-cargo-wagon-2",
+			ingredients =
+			{
+				{"cargo-wagon", 1},
+				{"iron-gear-wheel", 20},
+				{"steel-plate", 20},
+				{"low-density-structure", 10}	
+			},
+			result = "et-cargo-wagon-2"
+		},
+		
+		{	
+			type = "recipe",
+			name = "et-cargo-wagon-3",
+			ingredients =
+			{
+				{"et-cargo-wagon-2", 1},
+				{"iron-gear-wheel", 20},
+				{"steel-plate", 20},
+				{"low-density-structure", 10}
+			},
+			result = "et-cargo-wagon-3"
+		}
+	})
 end
 
-function fluid_rec()
-	data:extend({fluid_wagon_2,fluid_wagon_3})
+function UnlockFluidRecipe()
+	data:extend(
+	{
+		{	
+			type = "recipe",
+			name = "et-fluid-wagon-2",
+			ingredients =
+			{
+				{"fluid-wagon", 1},
+				{"iron-gear-wheel", 10},
+				{"steel-plate", 16},
+				{"pipe", 8},
+				{"storage-tank", 1},
+				{"low-density-structure", 10}
+			},
+			result = "et-fluid-wagon-2"
+		},
+		
+		{	
+			type = "recipe",
+			name = "et-fluid-wagon-3",
+			ingredients =
+			{
+				{"et-fluid-wagon-2", 1},
+				{"iron-gear-wheel", 10},
+				{"steel-plate", 16},
+				{"pipe", 8},
+				{"storage-tank", 1},
+				{"low-density-structure", 10}	
+			},
+			result = "et-fluid-wagon-3"
+		}
+	})
 end
+
+
+
+
+data:extend(
+{
+	{
+		type = "recipe",
+		name = "et-electricity-provider",
+		subgroup = "electric-transport-basic",
+		icon = "__ElectricTrain__/graphics/power-provider-icon.png",
+		icon_size = 32,
+		ingredients =
+		{
+			{"et-electricity-provider", 1}
+		},
+		results=
+		{
+			{"accumulator", 2},
+			{"advanced-circuit", 1}
+		}
+	}
+})

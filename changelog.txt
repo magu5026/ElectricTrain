@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.20
+Date: 2019-06-28
+  Minor Features:
+    - Implements a new Behavior.
+    - Control Station is the new building that powers the trains.
+    - For future updates, i will add more control stations to supply the trains (e.g. mk1 can supply 2 trains, mk2 4.....) and a GUI that makes that visible.
+---------------------------------------------------------------------------------------------------
 Version: 0.17.14
 Date: 2019-05-31
   Bugfixes:
@@ -63,7 +70,7 @@ Date: 2019-03-10
     - Attempt to fix the "item without a fuel value" error. https://mods.factorio.com/mod/ElectricTrain/discussion/5c7bd6de961aa5000cbe7693
     - Fixed the version issue. You have to update it manually. I'm sorry :(
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.0201
+Version: 0.17.1
 Date: 2019-03-01
   Major Features:
     - Release 0.17.
