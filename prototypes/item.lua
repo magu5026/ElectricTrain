@@ -107,3 +107,17 @@ data:extend(
 		stack_size = 200
 	}
 })
+
+data:extend(
+{
+	{
+		type = "item",
+		name = "et-rocket-part",
+		icon = "__base__/graphics/icons/rocket-part.png",
+		icon_size = 32,
+		flags = {"hidden"},
+		subgroup = "intermediate-product",
+		order = "q[et-rocket-part]",
+		stack_size = 100
+	}
+})

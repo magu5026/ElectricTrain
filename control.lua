@@ -28,16 +28,13 @@ function Reinitialize()
 	global = global or {}
 	global.LocList = global.LocList or {}
 	global.ControlList = global.ControlList or {}
-
-	anzLoc = Count(global.LocList)
-	anzControl = Count(global.ControlList)	
 	
-	CallRemoteInterface()
+	Load()
 end
 
 function OnInit()
 	Init()
-	CallRemoteInterface()
+	Load()
 end
 script.on_init(OnInit)
 
@@ -53,7 +50,7 @@ function OnConfigurationChanged(data)
 	else
 		Reinitialize()
 		if IsModChanged(data,modName) then
-			if not (GetOldVersion(data,modName) == "00.17.22") then
+			if not (GetOldVersion(data,modName) == "00.17.23") then
 				Init()
 
 				for _,force in pairs(game.forces) do
@@ -83,7 +80,7 @@ function OnConfigurationChanged(data)
 						if control.name:match("^et%-control%-station%-%d$") then
 							table.insert(global.ControlList,control)
 						end
-						if control.name:match("^et%-electric%-locomotive%-%d%-power$") then
+						if control.name:match("^et%-electric%-locomotive%-%d%-power$") or control.name:match("^et%-electric%-locomotive%-%d%-mu-power$") then
 							control.destroy()
 						end
 					end	

@@ -183,6 +183,12 @@ CreateTrainInterface(data.raw['locomotive']['et-electric-locomotive-1'])
 CreateTrainInterface(data.raw['locomotive']['et-electric-locomotive-2'])
 CreateTrainInterface(data.raw['locomotive']['et-electric-locomotive-3'])
 
+if mods['MultipleUnitTrainControl'] then
+	CreateTrainInterface(data.raw['locomotive']['et-electric-locomotive-1-mu'])	
+	CreateTrainInterface(data.raw['locomotive']['et-electric-locomotive-2-mu'])
+	CreateTrainInterface(data.raw['locomotive']['et-electric-locomotive-3-mu'])
+end
+
 
 data:extend(
 {
