@@ -145,27 +145,3 @@ function UnlockFluidRecipe()
 		}
 	})
 end
-
-
-
-
-data:extend(
-{
-	{
-		type = "recipe",
-		name = "et-electricity-provider",
-		enabled = false,
-		subgroup = "electric-transport-basic",
-		icons = {{icon = "__ElectricTrain__/graphics/power-provider-icon.png"}, {icon = "__ElectricTrain__/graphics/no.png"}},
-		icon_size = 32,
-		ingredients =
-		{
-			{"et-electricity-provider", 1}
-		},
-		results=
-		{
-			{"accumulator", 2},
-			{"advanced-circuit", 1}
-		}
-	}
-})

@@ -20,12 +20,12 @@ function FormatVersion(version)
 	return string.format("%02d.%02d.%02d", string.match(version, "(%d+).(%d+).(%d+)"))
 end
 
-function Contains(tab,elem)
-	for _,v in pairs(tab) do
-		if v == elem then
+function table.contains(self,item)
+	for _,v in pairs(self) do
+		if v == item then
 			return true
 		elseif type(v) == "table" then
-			if Contains(v,elem) then
+			if table.contains(v,item) then
 				return true
 			end
 		end
@@ -33,32 +33,12 @@ function Contains(tab,elem)
 	return false
 end
 
-function Remove(tab,elem)
-	for i,v in pairs(tab) do
-		if v == elem then
-			table.remove(tab,i)
-			return true
-		end
-	end
-	return false
-end
-
-
-function Count(list)
-	if list == nil or list == {} then return 0 end
+function table.count(self)
+	if self == nil or self == {} then return 0 end
 		
 	local i = 0
-	for _ in pairs(list) do
+	for _ in pairs(self) do
 		i = i + 1
 	end
 	return i
-end
-
-function in_table(table, item)
-    for k,v in pairs(table) do
-        if v == item or k == item then
-            return true
-        end
-    end
-    return false
 end

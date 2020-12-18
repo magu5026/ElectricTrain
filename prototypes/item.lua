@@ -99,19 +99,6 @@ data:extend(
 {
 	{
 		type = "item",
-		name = "et-electricity-provider",
-		icon = "__ElectricTrain__/graphics/power-provider-icon.png",
-		icon_size = 32,
-		subgroup = "electric-transport-basic",
-		order = "a",
-		stack_size = 200
-	}
-})
-
-data:extend(
-{
-	{
-		type = "item",
 		name = "et-rocket-part",
 		icon = "__base__/graphics/icons/rocket-part.png",
 		icon_size = 32,

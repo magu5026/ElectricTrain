@@ -3,6 +3,7 @@ require("lib")
 local anzLoc = 0
 local anzControl = 0
 
+
 function CallRemoteInterface()
 	if remote.interfaces["FuelTrainStop"] then
 		remote.call("FuelTrainStop", "exclude_from_fuel_schedule", "et-electric-locomotive-1")
@@ -20,8 +21,8 @@ end
 function Load()
 	CallRemoteInterface()
 
-	anzLoc = Count(global.LocList)
-	anzControl = Count(global.ControlList)
+	anzLoc = table.count(global.LocList)
+	anzControl = table.count(global.ControlList)
 end
 
 function Reinitialize()
@@ -50,7 +51,7 @@ function OnConfigurationChanged(data)
 	else
 		Reinitialize()
 		if IsModChanged(data,modName) then
-			if not (GetOldVersion(data,modName) == "00.17.23") then
+			if not (GetOldVersion(data,modName) < "00.17.27") then
 				Init()
 
 				for _,force in pairs(game.forces) do
@@ -59,7 +60,6 @@ function OnConfigurationChanged(data)
 						force.recipes['et-control-station-1'].enabled = true
 						force.recipes['et-current-collector'].enabled = true
 					end
-					force.recipes['et-electricity-provider'].enabled = true
 				end
 				
 				for _,surface in pairs(game.surfaces) do
@@ -72,7 +72,7 @@ function OnConfigurationChanged(data)
 					end	
 				end
 				
-				anzLoc = Count(global.LocList)
+				anzLoc = table.count(global.LocList)
 				
 				for _,surface in pairs(game.surfaces) do
 					local controls = surface.find_entities_filtered{type="electric-energy-interface"}
@@ -86,7 +86,7 @@ function OnConfigurationChanged(data)
 					end	
 				end
 				
-				anzControl = Count(global.ControlList)
+				anzControl = table.count(global.ControlList)
 			end
 		end
 	end
