@@ -3,6 +3,8 @@ electric_locomotive_1.name = "et-electric-locomotive-1"
 electric_locomotive_1.icon = "__ElectricTrain__/graphics/loc1.png"
 electric_locomotive_1.minable.result = "et-electric-locomotive-1"
 electric_locomotive_1.burner = {fuel_inventory_size = 0}
+electric_locomotive_1.icon_size = 32
+electric_locomotive_1.icon_mipmaps = nil
 
 local electric_locomotive_2 = table.deepcopy(data.raw['locomotive']['locomotive'])
 electric_locomotive_2.name = "et-electric-locomotive-2"
@@ -16,6 +18,8 @@ electric_locomotive_2.reversing_power_modifier = 0.8
 electric_locomotive_2.braking_force = 15
 electric_locomotive_2.friction_force = 0.375
 electric_locomotive_2.air_resistance = 0.005625
+electric_locomotive_2.icon_size = 32
+electric_locomotive_2.icon_mipmaps = nil
 
 local electric_locomotive_3 = table.deepcopy(data.raw['locomotive']['locomotive'])
 electric_locomotive_3.name = "et-electric-locomotive-3"
@@ -29,6 +33,8 @@ electric_locomotive_3.reversing_power_modifier = 1
 electric_locomotive_3.braking_force = 20
 electric_locomotive_3.friction_force = 0.25
 electric_locomotive_3.air_resistance = 0.00375
+electric_locomotive_3.icon_size = 32
+electric_locomotive_3.icon_mipmaps = nil
 
 data:extend({electric_locomotive_1,electric_locomotive_2,electric_locomotive_3})
 
@@ -79,6 +85,8 @@ cargo_wagon_2.max_speed = 1.8
 cargo_wagon_2.braking_force = 4
 cargo_wagon_2.friction_force = 0.375
 cargo_wagon_2.air_resistance = 0.003
+cargo_wagon_2.icon_size = 32
+cargo_wagon_2.icon_mipmaps = nil
 
 local cargo_wagon_3 = table.deepcopy(data.raw['cargo-wagon']['cargo-wagon'])
 cargo_wagon_3.name = "et-cargo-wagon-3"
@@ -91,6 +99,8 @@ cargo_wagon_3.max_speed = 2.4
 cargo_wagon_3.braking_force = 5
 cargo_wagon_3.friction_force = 0.25
 cargo_wagon_3.air_resistance = 0.002
+cargo_wagon_3.icon_size = 32
+cargo_wagon_3.icon_mipmaps = nil
 
 data:extend({cargo_wagon_2,cargo_wagon_3})
 
@@ -106,6 +116,8 @@ fluid_wagon_2.max_speed = 1.8
 fluid_wagon_2.braking_force = 4
 fluid_wagon_2.friction_force = 0.375
 fluid_wagon_2.air_resistance = 0.003
+fluid_wagon_2.icon_size = 32
+fluid_wagon_2.icon_mipmaps = nil
 
 local fluid_wagon_3 = table.deepcopy(data.raw['fluid-wagon']['fluid-wagon'])
 fluid_wagon_3.name = "et-fluid-wagon-3"
@@ -118,6 +130,8 @@ fluid_wagon_3.max_speed = 2.4
 fluid_wagon_3.braking_force = 5
 fluid_wagon_3.friction_force = 0.25
 fluid_wagon_3.air_resistance = 0.002
+fluid_wagon_3.icon_size = 32
+fluid_wagon_3.icon_mipmaps = nil
 
 data:extend({fluid_wagon_2,fluid_wagon_3})
 
