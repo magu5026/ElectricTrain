@@ -156,7 +156,7 @@ data:extend(
 		name = "et-electricity-provider",
 		enabled = false,
 		subgroup = "electric-transport-basic",
-		icon = "__ElectricTrain__/graphics/power-provider-icon.png",
+		icons = {{icon = "__ElectricTrain__/graphics/power-provider-icon.png"}, {icon = "__ElectricTrain__/graphics/no.png"}},
 		icon_size = 32,
 		ingredients =
 		{

@@ -53,13 +53,14 @@ function OnConfigurationChanged(data)
 	else
 		Reinitialize()
 		if IsModChanged(data,modName) then
-			if not (GetOldVersion(data,modName) == "00.17.21") then
+			if not (GetOldVersion(data,modName) == "00.17.22") then
 				Init()
 
 				for _,force in pairs(game.forces) do
 					local tech = force.technologies['et-electric-railway']
 					if tech and tech.researched then 
 						force.recipes['et-control-station-1'].enabled = true
+						force.recipes['et-current-collector'].enabled = true
 					end
 					force.recipes['et-electricity-provider'].enabled = true
 				end
