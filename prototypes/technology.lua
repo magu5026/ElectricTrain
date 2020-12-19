@@ -3,8 +3,9 @@ data:extend
 	{
 		type = "technology",
 		name = "et-electric-railway",
-		icon_size = 128,
-		icon = "__ElectricTrain__/graphics/tech.png",
+		icon_size = 256,
+		icon_mipmaps = 4,
+		icon = "__ElectricTrain__/graphics/electric-railway.png",
 		effects =
 		{
 			{
@@ -41,8 +42,9 @@ function UnlockTrainTechnology()
 		{
 			type = "technology",
 			name = "et-electric-railway-2",
-			icon_size = 128,
-			icon = "__ElectricTrain__/graphics/tech.png",
+			icon_size = 256,
+			icon_mipmaps = 4,
+			icon = "__ElectricTrain__/graphics/electric-railway.png",
 			effects =
 			{
 				{
@@ -68,8 +70,9 @@ function UnlockTrainTechnology()
 		{
 			type = "technology",
 			name = "et-electric-railway-3",
-			icon_size = 128,
-			icon = "__ElectricTrain__/graphics/tech.png",
+			icon_size = 256,
+			icon_mipmaps = 4,
+			icon = "__ElectricTrain__/graphics/electric-railway.png",
 			effects =
 			{
 				{
@@ -101,8 +104,9 @@ function UnlockCargoTechnology()
 		{
 			type = "technology",
 			name = "et-cargo-wagon-2",
-			icon_size = 128,
-			icon = "__ElectricTrain__/graphics/cargo.png",
+			icon_size = 256,
+			icon_mipmaps = 4,
+			icon = "__base__/graphics/technology/railway.png",
 			effects =
 			{
 				{
@@ -128,8 +132,9 @@ function UnlockCargoTechnology()
 		{
 			type = "technology",
 			name = "et-cargo-wagon-3",
-			icon_size = 128,
-			icon = "__ElectricTrain__/graphics/cargo.png",
+			icon_size = 256,
+			icon_mipmaps = 4,
+			icon = "__base__/graphics/technology/railway.png",
 			effects =
 			{
 				{
@@ -162,7 +167,8 @@ function UnlockFluidTechnology()
 		{
 			type = "technology",
 			name = "et-fluid-wagon-2",
-			icon_size = 128,
+			icon_size = 256,
+			icon_mipmaps = 4,
 			icon = "__base__/graphics/technology/fluid-wagon.png",
 			effects =
 			{
@@ -189,7 +195,8 @@ function UnlockFluidTechnology()
 		{
 			type = "technology",
 			name = "et-fluid-wagon-3",
-			icon_size = 128,
+			icon_size = 256,
+			icon_mipmaps = 4,
 			icon = "__base__/graphics/technology/fluid-wagon.png",
 			effects =
 			{
