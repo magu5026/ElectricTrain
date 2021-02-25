@@ -7,7 +7,7 @@ function UpdateMUControl(train,mu_power)
 	mu_power.energy_source =
 	{
 		type = "electric",
-		buffer_capacity = (energy * 2) .. "J",
+		buffer_capacity = (energy * settings.startup['mk-update-interval'].value) .. "J",
 		usage_priority = "secondary-input",
 		input_flow_limit = energy .. "J" ,
 		drain = power / 10 .. "J" ,
