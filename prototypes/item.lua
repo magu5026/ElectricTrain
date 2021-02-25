@@ -78,7 +78,7 @@ data:extend(
 		icon = "__base__/graphics/icons/wood.png",
 		icon_size = 32,
 		flags = { "hidden" },
-		fuel_value = "200kJ",
+		fuel_value = 100*settings.startup['mk-update-interval'].value.."kJ",
 		fuel_category = "chemical",
 		stack_size = 1
 	}

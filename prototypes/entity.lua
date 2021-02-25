@@ -57,7 +57,7 @@ data:extend
 		energy_source =
 		{
 			type = "electric",
-			buffer_capacity = "200KW",
+			buffer_capacity = 100 * settings.startup['mk-update-interval'].value.."KW",
 			usage_priority = "secondary-input",
 		},
 		energy_usage = "100KW",
@@ -182,7 +182,7 @@ function CreateTrainInterface(train)
 			energy_source =
 			{
 				type = "electric",
-				buffer_capacity = (energy * 2) .. "J",
+				buffer_capacity = (energy * settings.startup['mk-update-interval'].value) .. "J",
 				usage_priority = "secondary-input",
 				input_flow_limit = energy .. "J" ,
 				drain = power / 10 .. "J" ,

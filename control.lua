@@ -45,45 +45,33 @@ end
 script.on_load(OnLoad)
 
 function OnConfigurationChanged(data)
-	local modName = "ElectricTrain"
-	if not IsModChanged(data,modName) then
-		Load()
-	else
-		oldVersion = GetOldVersion(data,modName)
-		newVersion = GetNewVersion(data,modName)
+	Init()
 
-		if oldVersion == newVersion then
-			Reinitialize()
-		else
-			Init()
-		
-			for _,surface in pairs(game.surfaces) do
-				local trains = surface.find_entities_filtered{type="locomotive"}
-				for _,train in pairs(trains) do
-					if train.name:match("^et%-electric%-locomotive%-%d$") or train.name:match("^et%-electric%-locomotive%-%d%-mu$") then
-						table.insert(global.LocList,{entity=train,provider=nil})
-						train.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
-					end
-				end	
+	for _,surface in pairs(game.surfaces) do
+		local trains = surface.find_entities_filtered{type="locomotive"}
+		for _,train in pairs(trains) do
+			if train.name:match("^et%-electric%-locomotive%-%d$") or train.name:match("^et%-electric%-locomotive%-%d%-mu$") then
+				table.insert(global.LocList,{entity=train,provider=nil})
+				train.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
 			end
-			
-			anzLoc = table.count(global.LocList)
-			
-			for _,surface in pairs(game.surfaces) do
-				local controls = surface.find_entities_filtered{type="electric-energy-interface"}
-				for _,control in pairs(controls) do
-					if control.name:match("^et%-control%-station%-%d$") then
-						table.insert(global.ControlList,control)
-					end
-					if control.name:match("^et%-electric%-locomotive%-%d%-power$") or control.name:match("^et%-electric%-locomotive%-%d%-mu-power$") then
-						control.destroy()
-					end
-				end	
-			end
-			
-			anzControl = table.count(global.ControlList)
-		end
+		end	
 	end
+	
+	anzLoc = table.count(global.LocList)
+	
+	for _,surface in pairs(game.surfaces) do
+		local controls = surface.find_entities_filtered{type="electric-energy-interface"}
+		for _,control in pairs(controls) do
+			if control.name:match("^et%-control%-station%-%d$") then
+				table.insert(global.ControlList,control)
+			end
+			if control.name:match("^et%-electric%-locomotive%-%d%-power$") or control.name:match("^et%-electric%-locomotive%-%d%-mu-power$") then
+				control.destroy()
+			end
+		end	
+	end
+	
+	anzControl = table.count(global.ControlList)
 end
 script.on_configuration_changed(OnConfigurationChanged)
 
@@ -185,4 +173,4 @@ function OnTick()
 	end
 end
 --script.on_event(defines.events.on_tick,OnTick)
-script.on_nth_tick(2,OnTick)
+script.on_nth_tick(settings.startup['mk-update-interval'].value,OnTick)
