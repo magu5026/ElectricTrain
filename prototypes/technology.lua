@@ -5,7 +5,7 @@ data:extend
 		name = "et-electric-railway",
 		icon_size = 256,
 		icon_mipmaps = 4,
-		icon = "__ElectricTrain__/graphics/electric-railway.png",
+		icon = "__AdvElectricTrain__/graphics/electric-railway.png",
 		effects =
 		{
 			{
@@ -24,7 +24,7 @@ data:extend
 		prerequisites = {"railway", "electric-engine", "battery", "low-density-structure"},
 		unit =
 		{
-			count = 300,
+			count = 320,
 			ingredients =
 			{
 				{"automation-science-pack", 1},
@@ -44,7 +44,7 @@ function UnlockTrainTechnology()
 			name = "et-electric-railway-2",
 			icon_size = 256,
 			icon_mipmaps = 4,
-			icon = "__ElectricTrain__/graphics/electric-railway.png",
+			icon = "__AdvElectricTrain__/graphics/electric-railway.png",
 			effects =
 			{
 				{
@@ -55,7 +55,7 @@ function UnlockTrainTechnology()
 			prerequisites = {"et-electric-railway"},
 			unit =
 			{
-				count = 300,
+				count = 400,
 				ingredients =
 				{
 					{"automation-science-pack", 2},
@@ -72,7 +72,7 @@ function UnlockTrainTechnology()
 			name = "et-electric-railway-3",
 			icon_size = 256,
 			icon_mipmaps = 4,
-			icon = "__ElectricTrain__/graphics/electric-railway.png",
+			icon = "__AdvElectricTrain__/graphics/electric-railway.png",
 			effects =
 			{
 				{
@@ -83,7 +83,7 @@ function UnlockTrainTechnology()
 			prerequisites = {"et-electric-railway-2", "utility-science-pack"},
 			unit =
 			{
-				count = 300,
+				count = 425,
 				ingredients =
 				{
 					{"automation-science-pack", 3},
@@ -94,7 +94,37 @@ function UnlockTrainTechnology()
 				time = 30
 			},
 			order = "c-g-a-a-a-c"
+		},
+		{
+			type = "technology",
+			name = "et-electric-railway-4",
+			icon_size = 256,
+			icon_mipmaps = 4,
+			icon = "__AdvElectricTrain__/graphics/electric-railway.png",
+			effects =
+			{
+				{
+					type = "unlock-recipe",
+					recipe = "et-electric-locomotive-4"
+				}
+			},
+			prerequisites = {"et-electric-railway-2", "utility-science-pack"},
+			unit =
+			{
+				count = 425,
+				ingredients =
+				{
+					{"automation-science-pack", 3},
+					{"logistic-science-pack", 3},
+					{"chemical-science-pack", 1},
+					{"production-science-pack", 1}
+				},
+				time = 30
+			},
+			order = "c-g-a-a-a-c"
 		}
+
+
 	})
 end
 
