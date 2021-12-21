@@ -45,7 +45,7 @@ end
 script.on_load(OnLoad)
 
 function OnConfigurationChanged(data)
-	local modName = "ElectricTrain"
+	local modName = "AdvElectricTrain"
 	if not IsModChanged(data,modName) then
 		Load()
 	else
@@ -56,7 +56,7 @@ function OnConfigurationChanged(data)
 			Reinitialize()
 		else
 			Init()
-		
+
 			for _,surface in pairs(game.surfaces) do
 				local trains = surface.find_entities_filtered{type="locomotive"}
 				for _,train in pairs(trains) do
@@ -64,11 +64,11 @@ function OnConfigurationChanged(data)
 						table.insert(global.LocList,{entity=train,provider=nil})
 						train.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
 					end
-				end	
+				end
 			end
-			
+
 			anzLoc = table.count(global.LocList)
-			
+
 			for _,surface in pairs(game.surfaces) do
 				local controls = surface.find_entities_filtered{type="electric-energy-interface"}
 				for _,control in pairs(controls) do
@@ -78,9 +78,9 @@ function OnConfigurationChanged(data)
 					if control.name:match("^et%-electric%-locomotive%-%d%-power$") or control.name:match("^et%-electric%-locomotive%-%d%-mu-power$") then
 						control.destroy()
 					end
-				end	
+				end
 			end
-			
+
 			anzControl = table.count(global.ControlList)
 		end
 	end
@@ -94,7 +94,7 @@ function OnBuiltEntity(event)
 			table.insert(global.ControlList,entity)
 			anzControl = anzControl + 1
 		elseif entity.type == "locomotive" then
-			if entity.name:match("^et%-electric%-locomotive%-%d$") or entity.name:match("^et%-electric%-locomotive%-%d%-mu$") then 
+			if entity.name:match("^et%-electric%-locomotive%-%d$") or entity.name:match("^et%-electric%-locomotive%-%d%-mu$") then
 			table.insert(global.LocList,{entity=entity,provider=nil})
 			entity.burner.currently_burning = game.item_prototypes['et-electric-locomotive-fuel']
 			anzLoc = anzLoc + 1
@@ -107,7 +107,7 @@ script.on_event({defines.events.on_built_entity,defines.events.on_robot_built_en
 function OnRemoveEntity(event)
 	local entity = event.entity
 	if entity and entity.valid then
-		if entity.name:match("^et%-control%-station%-%d$") then		
+		if entity.name:match("^et%-control%-station%-%d$") then
 			for i,control in pairs(global.ControlList) do
 				if control == entity then
 					for _,loc in pairs(global.LocList) do
@@ -122,7 +122,7 @@ function OnRemoveEntity(event)
 				end
 			end
 		elseif entity.type == "locomotive" then
-			if entity.name:match("^et%-electric%-locomotive%-%d$") or entity.name:match("^et%-electric%-locomotive%-%d%-mu$") then 
+			if entity.name:match("^et%-electric%-locomotive%-%d$") or entity.name:match("^et%-electric%-locomotive%-%d%-mu$") then
 				for i,loc in pairs(global.LocList) do
 					if loc.entity == entity then
 						if loc.provider and loc.provider.valid then
@@ -148,6 +148,8 @@ function CreateProvider(loc)
 	loc.provider = entity
 end
 
+
+
 function RemoveLoc(i)
 	if global.LocList[i] then
 		if global.LocList[i].entity and global.LocList[i].entity.valid then
@@ -166,10 +168,12 @@ function OnTick()
 			if loc and loc.entity and loc.entity.valid then
 				if not (loc.provider and loc.provider.valid) then
 					CreateProvider(loc)
-				else	
+				else
+
 					needPower = loc.entity.burner.currently_burning.fuel_value - loc.entity.burner.remaining_burning_fuel
-					
+
 					restPower = loc.provider.energy - needPower
+
 					if restPower > 0 then
 						loc.entity.burner.remaining_burning_fuel = loc.entity.burner.currently_burning.fuel_value
 						loc.provider.energy = loc.provider.energy - needPower
@@ -183,6 +187,29 @@ function OnTick()
 			end
 		end
 	end
+--[[	if anzLoc > 0 and anzControl > 0 then
+		for i,loc in pairs(global.LocList) do
+			if loc and loc.entity and loc.entity.valid then
+				if not (loc.provider and loc.provider.valid) then
+					CreateProvider(loc)
+				else
+					needPower = loc.entity.burner.currently_burning.fuel_value - loc.entity.burner.remaining_burning_fuel
+
+					restPower = loc.provider.energy - needPower
+
+					if restPower > 0 then
+						loc.entity.burner.remaining_burning_fuel = loc.entity.burner.currently_burning.fuel_value
+						loc.provider.energy = loc.provider.energy - needPower
+					else
+						loc.entity.burner.remaining_burning_fuel = loc.entity.burner.remaining_burning_fuel + loc.provider.energy
+						loc.provider.energy = 0
+					end
+				end
+			else
+				RemoveLoc(i)
+			end
+		end
+	end]]
 end
 --script.on_event(defines.events.on_tick,OnTick)
 script.on_nth_tick(2,OnTick)

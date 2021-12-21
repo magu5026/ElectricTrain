@@ -1,9 +1,9 @@
 {
-	"name":"ElectricTrain",
+	"name":"AdvElectricTrain",
 	"author":"magu5026",
-	"version":"1.1.2",
-	"title":"Electric Train",
-	"description":"Adds electric locomotives to the game.",
+	"version":"1.1.8",
+	"title":"电力机车Electric Train",
+	"description":"添加了一些不同等级的电力机车.Adds electric locomotives to the game.",
 	"factorio_version":"1.1",
 	"dependencies": ["base >= 1.1.1", "?FactorioExtended-Trains", "?boblogistics", "?Vehicle Wagon", "?EvenMoreLight", "?MultipleUnitTrainControl"]
 }

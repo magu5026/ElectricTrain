@@ -72,7 +72,21 @@ function UnlockTrainRecipe()
 				{"processing-unit", 10}	
 			},
 			result = "et-electric-locomotive-3"
-		}
+		},
+
+		{
+        	type = "recipe",
+        	name = "et-electric-locomotive-4",
+        	enabled = false,
+        	ingredients =
+        	{
+        		{"et-electric-locomotive-2", 1},
+        		{"low-density-structure", 15},
+        		{"electric-engine-unit", 30},
+        		{"processing-unit", 25}
+        	},
+        	result = "et-electric-locomotive-4"
+        }
 	})
 end
 
